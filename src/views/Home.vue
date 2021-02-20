@@ -15,7 +15,7 @@ import { defineComponent, ref } from 'vue'
 import HelloWorld from '@/components/HelloWorld.vue' // @ is an alias to /src
 
 export default defineComponent({
-  name: 'Home',
+  name: 'HomeTEST',
   components: {
     HelloWorld,
   },
