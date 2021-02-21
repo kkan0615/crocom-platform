@@ -1,7 +1,15 @@
 import { createApp } from 'vue'
 import App from './App.vue'
+/* PWA */
 import './registerServiceWorker'
+/* Router */
 import router from './router'
-import store from './store'
 
-createApp(App).use(store).use(router).mount('#app')
+/* Store */
+import { store, key } from './store'
+
+export const app =
+  createApp(App)
+    .use(store, key)
+    .use(router)
+    .mount('#app')
