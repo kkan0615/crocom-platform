@@ -11,6 +11,7 @@ export default defineComponent({
   name: 'Home',
   setup () {
     const msg = ref('Home File')
+
     return {
       msg
     }
