@@ -10,14 +10,7 @@ import { userGetters, UserGetters } from '@/store/modules/user/getters'
 import { userMutations, UserMutations } from '@/store/modules/user/mutations'
 import { UserActions, userActions } from '@/store/modules/user/actions'
 
-const userModule: Module<UserState, RootState> = {
-  state: userState,
-  getters: userGetters,
-  mutations: userMutations,
-  actions: userActions,
-}
-
-export type UserStore<S = UserState> = Omit<
+export type Store<S = UserState> = Omit<
 VuexStore<S>,
 'commit' | 'getters' | 'dispatch'
 > & {
@@ -38,4 +31,11 @@ VuexStore<S>,
   ): ReturnType<UserActions[K]>
 }
 
-export default userModule
+export const userModule: Module<UserState, RootState> = {
+  // @TODO: namespaced 어떻게 쓸지고민하기
+  // namespaced: true,
+  state: userState,
+  getters: userGetters,
+  mutations: userMutations,
+  actions: userActions,
+}

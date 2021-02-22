@@ -9,7 +9,7 @@ import router from './router'
 import { store, key } from './store'
 
 export const app =
-  createApp(App)
+  createApp(App as any)
     .use(store, key)
     .use(router)
     .mount('#app')

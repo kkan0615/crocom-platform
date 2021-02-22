@@ -23,6 +23,7 @@ export interface UserActions {
 
 export const userActions: ActionTree<UserState, RootState> & UserActions = {
   [UserActionTypes.setUser] ({ commit }, payload) {
+    console.log('I am in action', payload)
     commit(UserMutationTypes.SET_USER, payload)
   },
 }
