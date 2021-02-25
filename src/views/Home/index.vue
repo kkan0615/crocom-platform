@@ -6,10 +6,10 @@
 </template>
 
 <script lang="ts">
-import { ref, defineComponent, onMounted, computed } from 'vue'
+import { ref, defineComponent, onMounted, computed, inject } from 'vue'
 // import { useStore } from 'vuex'
 import useStore, { key } from '@/store'
-import { UserActionTypes } from '@/store/modules/user/actions'
+// import { UserActionTypes } from '@/store/modules/user/actions'
 
 export default defineComponent({
   name: 'Home',
@@ -18,16 +18,18 @@ export default defineComponent({
     const store = useStore()
 
     const userInfo = computed(() => store.state.user)
+    const dialog = inject('dialog')
 
     onMounted(async () => {
-      console.log(store)
-      console.log('state', store.state)
-      console.log('state.user', store.state.user)
-      console.log('getters', store.getters.isLoggedIn)
-      console.log('dispatch', await store.dispatch(UserActionTypes.setUser, { id: 1, name: 'test' }))
-      console.log('-00----------------------after-00------------------------')
-      console.log('after state', store.state.user)
-      console.log('getters', store.getters.isLoggedIn)
+      // console.log(store)
+      // console.log('state', store.state)
+      // console.log('state.user', store.state.user)
+      // console.log('getters', store.getters.isLoggedIn)
+      // console.log('dispatch', await store.dispatch(UserActionTypes.setUser, { id: 1, name: 'test' }))
+      // console.log('-00----------------------after-00------------------------')
+      // console.log('after state', store.state.user)
+      // console.log('getters', store.getters.isLoggedIn)
+      console.log(dialog.confirm('test'))
     })
 
     return {
