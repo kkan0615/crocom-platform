@@ -1,6 +1,6 @@
-
 import { App } from 'vue'
 import { Dialog } from '@/types/plugins/dialog'
+import { PluginProvideType } from '@/types/provide/plugin'
 
 export default {
   install: (app: App) => {
@@ -11,7 +11,7 @@ export default {
     }
 
     app.config.globalProperties.$dialog = dialogModule
-    app.provide('dialog', dialogModule)
+    app.provide(PluginProvideType.dialog, dialogModule)
   }
 }
 
