@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import GeneralLayout from '@/layouts/general/index.vue'
-// import { ExtendedRouteRecordRaw } from '@/types/router'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -15,6 +14,14 @@ const routes: Array<RouteRecordRaw> = [
         path: '',
         name: 'Home',
         component: () => import('@/views/Home/index.vue'),
+        meta: {
+          hidden: false
+        }
+      },
+      {
+        path: 'playground',
+        name: 'Playground',
+        component: () => import('@/views/Playground/index.vue'),
         meta: {
           hidden: false
         }
