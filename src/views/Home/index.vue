@@ -2,6 +2,11 @@
   <div>
     {{ msg }}
     {{ userInfo }}
+    <router-link
+      :to="{ name: 'Playground' }"
+    >
+      Playground
+    </router-link>
   </div>
 </template>
 
@@ -9,6 +14,7 @@
 import { ref, defineComponent, onMounted, computed, inject } from 'vue'
 // import { useStore } from 'vuex'
 import useStore, { key } from '@/store'
+import { useRouter } from 'vue-router'
 // import { UserActionTypes } from '@/store/modules/user/actions'
 
 export default defineComponent({
@@ -18,7 +24,6 @@ export default defineComponent({
     const store = useStore()
 
     const userInfo = computed(() => store.state.user)
-    const dialog = inject('dialog')
 
     onMounted(async () => {
       // console.log(store)
@@ -29,12 +34,12 @@ export default defineComponent({
       // console.log('-00----------------------after-00------------------------')
       // console.log('after state', store.state.user)
       // console.log('getters', store.getters.isLoggedIn)
-      console.log(dialog.confirm('test'))
+      // console.log(dialog.confirm('test'))
     })
 
     return {
       msg,
-      userInfo
+      userInfo,
     }
   }
 })
