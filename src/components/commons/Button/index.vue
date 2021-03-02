@@ -27,7 +27,7 @@ export default defineComponent({
     },
     color: {
       type: String,
-      default: 'blue',
+      default: 'primary',
       required: false,
     },
     border: {
@@ -54,25 +54,22 @@ export default defineComponent({
   },
   setup (props) {
     const styles = computed(() => {
-      // bg-blue-500 font-bold text-white px-2 py-1 transition duration-300 ease-in-out hover:bg-blue-600
-      // return 'focus:outline-none text-white text-sm py-2 px-3 rounded-md bg-blue-500 hover:bg-blue-600 hover:shadow-lg'
-
       return {
         'focus:outline-none': true,
         'text-white': !props.border && !props.flat,
-        [`text-${props.color}-600`]: props.border || props.flat,
+        [`text-${props.color}-accent`]: props.border || props.flat,
         'text-sm': true,
         'py-2': true,
         'px-3': true,
         'rounded-md': true,
         'rounded-full': props.rounded,
-        [`bg-${props.color}-500`]: !props.border && !props.flat && !props.disabled,
-        [`bg-${props.color}-300`]: props.disabled,
-        [`hover:bg-${props.color}-600`]: !props.border && !props.flat && !props.disabled,
+        [`bg-${props.color}`]: !props.border && !props.flat && !props.disabled,
+        [`bg-${props.color}-blur`]: props.disabled,
+        [`hover:bg-${props.color}-accent`]: !props.border && !props.flat && !props.disabled,
         'hover:shadow-lg': !props.border && !props.flat && !props.disabled,
         'border': props.border && !props.flat,
-        [`border-${props.color}-600`]: props.border && !props.flat,
-        [`hover:bg-${props.color}-100`]: props.border && !props.flat,
+        [`border-${props.color}-accent`]: props.border && !props.flat,
+        [`hover:bg-${props.color}-blur`]: props.border && !props.flat,
         'w-full': props.block
       }
     })

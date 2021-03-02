@@ -2,18 +2,27 @@
   <div>
     {{ msg }}
     <t-button
+      class="mr-1"
       @click="test"
     >
       default
     </t-button>
     <t-button
+      @click="test"
+      class="mx-1"
+      disabled
+    >
+      disabled
+    </t-button>
+    <t-button
       :border="border"
-      class="mx-2"
+      class="mx-1"
       @click="test"
     >
       border
     </t-button>
     <t-button
+      class="ml-1"
       flat
       @click="test"
     >
@@ -35,8 +44,7 @@ export default defineComponent({
     const msg = ref('Playground File')
     const border = ref(true)
     const test = () => {
-      console.log('test')
-      border.value = !border.value
+      alert('clicked!')
     }
 
     return {
