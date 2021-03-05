@@ -1,147 +1,86 @@
 <template>
-  <div :class="wrapperStyles">
-    <slot
-      name="label"
-      v-bind="{ label, labelStyles }"
+  <div
+    :class="wrapperStyle"
+  >
+    <div
+      v-if="preAppend"
+      :class="preAppendStyle"
     >
-      <label
-        :for="id"
-        :class="labelStyles"
-      >
-        {{ label }}
-      </label>
-    </slot>
+      <slot
+        name="preAppend"
+      />
+    </div>
     <slot
       name="input"
-      v-bind="{ inputStyles }"
     >
       <input
         :id="id"
         :type="type"
-        :class="inputStyles"
+        :class="inputStyle"
         :placeholder="placeholder"
-      />
+      >
     </slot>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, computed } from 'vue'
-import { v4 } from 'uuid'
+
+import inputMixin from '@/mixins/input'
+import inputProps from '@/components/commons/Inputs/Default/types'
 
 export default defineComponent({
   name: 'TDefaultInput',
+  mixins: [
+    inputMixin
+  ],
   props: {
-    id: {
-      type: String,
-      default: v4(),
-      required: false
-    },
-    label: {
-      type: String,
-      default: '',
-      required: false
-    },
-    placeholder: {
-      type: String,
-      default: '',
-      required: false
-    },
-    type: {
-      type: String,
-      default: 'text',
-      required: false
-    },
-    left: {
-      type: Boolean,
-      default: false,
-      required: false,
-    },
-    readOnly: {
-      type: Boolean,
-      default: false,
-      required: false,
-    },
-    disabled: {
-      type: Boolean,
-      default: false,
-      required: false,
-    },
-    color: {
-      type: String,
-      default: 'blue',
-      required: false,
-    },
-    border: {
-      type: Boolean,
-      default: false,
-      required: false,
-    },
-    flat: {
-      type: Boolean,
-      default: false,
-      required: false,
-    },
-    rounded: {
-      type: Boolean,
-      default: false,
-      required: false,
-    },
-    /* To make full size of block */
-    block: {
-      type: Boolean,
-      default: false,
-      required: false,
-    },
-    shadow: {
-      type: Boolean,
-      default: false,
-      required: false,
-    },
+    ...inputProps
   },
   setup (props) {
-    const inputStyles = computed(() => {
+    const inputStyle = computed(() => {
       return {
+        'default-input': true,
         'rounded-sm': true,
+        'px-4': true,
+        'py-2': props.dense,
+        'py-3': !props.dense,
+        'focus:outline-none': true,
+        'bg-gray-100': true,
+        'flex-1': props.preAppend,
+        'w-full': !props.preAppend,
+      }
+    })
+
+    const wrapperStyle = computed(() => {
+      return {
+        'my-1': true,
+        'text-sm': props.dense,
+        'text-base': !props.dense,
+        'flex': props.preAppend,
+        'w-full': !props.preAppend,
+        'shadow-md': props.shadow,
+      }
+    })
+
+    const preAppendStyle = computed(() => {
+      return {
+        'text-sm': true,
+        'border': true,
+        'border-2': true,
+        'rounded-l': true,
         'px-4': true,
         'py-2': true,
         'mt-3': true,
-        'focus:outline-none': true,
-        'bg-gray-100': true,
-        'flex-1': true,
-      }
-    })
-
-    const wrapperStyles = computed(() => {
-      return {
-        'my-5': true,
-        'text-sm': true,
-        'shadow-md': props.shadow,
-        'flex': props.left,
-        'w-full': true,
-      }
-    })
-
-    const labelStyles = computed(() => {
-      return {
-        'text-sm': props.left,
-        'border': props.left,
-        'border-2': props.left,
-        'rounded-l': props.left,
-        'px-4': props.left,
-        'py-2': props.left,
-        'mt-3': props.left,
-        'bg-gray-300': props.left,
-        'whitespace-no-wrap': props.left,
-        'block': !props.left,
-        'text-black': !props.left,
+        'bg-gray-300': true,
+        'whitespace-no-wrap': true,
       }
     })
 
     return {
-      inputStyles,
-      labelStyles,
-      wrapperStyles,
+      wrapperStyle,
+      preAppendStyle,
+      inputStyle,
     }
   }
 })
