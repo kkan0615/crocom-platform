@@ -7,6 +7,7 @@ import './registerServiceWorker'
 import router from './router'
 // import '@/types/plugins/index.d.ts'
 import DialogPlugin from '@/plugins/dialog'
+import ThemePlugin from '@/plugins/theme'
 
 /* Store */
 import { store, key } from './store'
@@ -16,4 +17,5 @@ export const app =
     .use(store, key)
     .use(router)
     .use(DialogPlugin)
+    .use(ThemePlugin)
     .mount('#app')
