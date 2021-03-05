@@ -8,9 +8,9 @@
       default
     </t-button>
     <t-button
-      @click="test"
       class="mx-1"
       disabled
+      @click="test"
     >
       disabled
     </t-button>
@@ -28,14 +28,18 @@
     >
       flat
     </t-button>
-    <t-default-input
-      label="test"
+    <t-horizontal-input
+      label="Horizontal Input"
       placeholder="placeholder"
     />
-    <t-default-input
-      label="left test"
+    <t-label-input
+      label="Label input"
       placeholder="placeholder"
-      left
+    />
+    <t-label-input
+      label="Dense Label input"
+      dense
+      placeholder="placeholder"
     />
   </div>
 </template>
@@ -43,13 +47,15 @@
 <script lang="ts">
 import { ref, defineComponent } from 'vue'
 import TButton from '@/components/commons/Button/index.vue'
-import TDefaultInput from '@/components/commons/inputs/Default/index.vue'
+import THorizontalInput from '@/components/commons/inputs/Horizontal/index.vue'
+import TLabelInput from '@/components/commons/inputs/Label/index.vue'
 
 export default defineComponent({
   name: 'Playground',
   components: {
     TButton,
-    TDefaultInput,
+    THorizontalInput,
+    TLabelInput,
   },
   setup () {
     const msg = ref('Playground File')
