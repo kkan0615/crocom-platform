@@ -25,7 +25,6 @@
 
 <script lang="ts">
 import { defineComponent, computed } from 'vue'
-
 import inputMixin from '@/mixins/input'
 import inputProps from '@/components/commons/Inputs/Default/types'
 
