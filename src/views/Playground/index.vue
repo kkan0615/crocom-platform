@@ -28,17 +28,28 @@
     >
       flat
     </t-button>
+    <t-default-input
+      label="test"
+      placeholder="placeholder"
+    />
+    <t-default-input
+      label="left test"
+      placeholder="placeholder"
+      left
+    />
   </div>
 </template>
 
 <script lang="ts">
 import { ref, defineComponent } from 'vue'
 import TButton from '@/components/commons/Button/index.vue'
+import TDefaultInput from '@/components/commons/inputs/Default/index.vue'
 
 export default defineComponent({
   name: 'Playground',
   components: {
-    TButton
+    TButton,
+    TDefaultInput,
   },
   setup () {
     const msg = ref('Playground File')
