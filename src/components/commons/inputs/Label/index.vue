@@ -26,7 +26,7 @@
 
 <script lang="ts">
 import { ref, defineComponent, computed } from 'vue'
-import TDefaultInput from '@/components/commons/Inputs/Default/index.vue'
+import TDefaultInput from '@/components/commons/inputs/Default/index.vue'
 import inputProps from '@/components/commons/Inputs/Default/types'
 
 export default defineComponent({
