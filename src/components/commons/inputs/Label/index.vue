@@ -27,7 +27,7 @@
 <script lang="ts">
 import { ref, defineComponent, computed } from 'vue'
 import TDefaultInput from '@/components/commons/inputs/Default/index.vue'
-import inputProps from '@/components/commons/Inputs/Default/types'
+import inputProps from '@/components/commons/inputs/Default/types/index.ts'
 
 export default defineComponent({
   name: 'TLabelInput',
