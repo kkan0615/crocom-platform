@@ -20,14 +20,26 @@
       :dense="dense"
       :shadow="shadow"
       :pre-append="preAppend"
-    />
+      :color="color"
+      :block="block"
+      :border="border"
+      :focus="focus"
+    >
+      <template
+        #preAppend
+      >
+        <slot
+          name="preAppend"
+        />
+      </template>
+    </t-default-input>
   </div>
 </template>
 
 <script lang="ts">
 import { ref, defineComponent, computed } from 'vue'
 import TDefaultInput from '@/components/commons/inputs/Default/index.vue'
-import inputProps from '@/components/commons/inputs/Default/types/index.ts'
+import { inputProps } from '@/components/commons/inputs/Default/types/index.ts'
 
 export default defineComponent({
   name: 'TLabelInput',
@@ -56,10 +68,15 @@ export default defineComponent({
     })
 
     const labelStyle = computed(() => {
-      return {
+      const style: Record<string, boolean> = {
         'block': true,
         'text-black': true,
       }
+
+      if (props.color)
+        style[`text-${props.color}`] = true
+
+      return style
     })
 
     return {

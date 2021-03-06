@@ -37,10 +37,24 @@
       placeholder="placeholder"
     />
     <t-label-input
+      color="primary"
       label="Dense Label input"
       dense
       placeholder="placeholder"
     />
+    <t-label-input
+      color="primary"
+      label="Dense Label input with pre-append"
+      dense
+      placeholder="placeholder"
+      pre-append
+    >
+      <template
+        #preAppend
+      >
+        temp
+      </template>
+    </t-label-input>
   </div>
 </template>
 

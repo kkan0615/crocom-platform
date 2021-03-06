@@ -18,6 +18,8 @@
         :type="type"
         :class="inputStyle"
         :placeholder="placeholder"
+        :readonly="readOnly"
+        :disabled="disabled"
       >
     </slot>
   </div>
@@ -44,10 +46,15 @@ export default defineComponent({
         'px-4': true,
         'py-2': props.dense,
         'py-3': !props.dense,
-        'focus:outline-none': true,
         'bg-gray-100': true,
         'flex-1': props.preAppend,
-        'w-full': !props.preAppend,
+        'w-full': !props.preAppend && props.block,
+        'focus:outline-none': props.focus,
+        'focus:ring-2': props.focus,
+        [`focus:ring-${props.color}`]: props.focus && props.color,
+        'focus:border-transparent': props.focus,
+        'ring-2':props.border,
+        [`ring-${props.color}`]: props.border && props.color,
       }
     })
 
@@ -59,18 +66,16 @@ export default defineComponent({
         'flex': props.preAppend,
         'w-full': !props.preAppend,
         'shadow-md': props.shadow,
+        [`text-${props.color}`]: props.color,
       }
     })
 
     const preAppendStyle = computed(() => {
       return {
         'text-sm': true,
-        'border': true,
-        'border-2': true,
         'rounded-l': true,
         'px-4': true,
         'py-2': true,
-        'mt-3': true,
         'bg-gray-300': true,
         'whitespace-no-wrap': true,
       }

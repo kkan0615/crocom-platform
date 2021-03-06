@@ -1,7 +1,7 @@
 import { CustomComponentObjectPropsOptions } from '@/types/vue/props'
 import { v4 } from 'uuid'
 
-export interface Input {
+export interface InputProps {
   id: string
   placeholder: string
   type: string
@@ -10,6 +10,7 @@ export interface Input {
   disabled: string
   color: string
   border: string
+  focus: string
   flat: string
   rounded: string
   block: string
@@ -17,7 +18,7 @@ export interface Input {
   dense: string
 }
 
-export const inputProps: CustomComponentObjectPropsOptions<Input> = {
+export const inputProps: CustomComponentObjectPropsOptions<InputProps> = {
   id: {
     type: String,
     default: v4(),
@@ -50,12 +51,17 @@ export const inputProps: CustomComponentObjectPropsOptions<Input> = {
   },
   color: {
     type: String,
-    default: 'blue',
+    default: '',
     required: false,
   },
   border: {
     type: Boolean,
     default: false,
+    required: false,
+  },
+  focus: {
+    type: Boolean,
+    default: true,
     required: false,
   },
   flat: {
