@@ -2,6 +2,7 @@
   <div
     :class="wrapperStyle"
   >
+    <!-- Label Field -->
     <label
       :class="labelStyle"
       :for="id"
@@ -12,8 +13,10 @@
         {{ label }}
       </slot>
     </label>
+    <!-- Input field -->
     <t-default-input
       :id="id"
+      :value="value"
       :disabled="disabled"
       :placeholder="placeholder"
       :type="type"
@@ -24,6 +27,8 @@
       :block="block"
       :border="border"
       :focus="focus"
+      :rules="rules"
+      @update:value="onInput"
     >
       <template
         #preAppend
@@ -37,7 +42,7 @@
 </template>
 
 <script lang="ts">
-import { ref, defineComponent, computed } from 'vue'
+import { defineComponent, computed } from 'vue'
 import TDefaultInput from '@/components/commons/inputs/Default/index.vue'
 import { inputProps } from '@/components/commons/inputs/Default/types/index.ts'
 
@@ -54,15 +59,21 @@ export default defineComponent({
       required: false
     },
   },
-  setup (props) {
-    const msg = ref('Home File')
+  emits: [
+    'update:value',
+  ],
+  setup (props, context) {
+
+    const onInput = (value: string | number) => {
+      context.emit('update:value', value)
+    }
+
     const wrapperStyle = computed(() => {
       return {
-        'my-5': true,
-        'text-sm': props.dense,
-        'text-base': !props.dense,
         'w-full': true,
         'font-bold': true,
+        'text-sm': props.dense,
+        'text-base': !props.dense,
         'shadow-md': props.shadow,
       }
     })
@@ -80,9 +91,9 @@ export default defineComponent({
     })
 
     return {
-      msg,
       wrapperStyle,
       labelStyle,
+      onInput,
     }
   }
 })
