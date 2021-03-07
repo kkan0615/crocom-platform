@@ -1,5 +1,7 @@
 <template>
-  <div>
+  <div
+    class="p-1"
+  >
     <t-button
       class="mr-1"
       @click="test"

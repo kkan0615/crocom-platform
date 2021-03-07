@@ -18,6 +18,7 @@ export interface InputProps {
   shadow: string
   dense: string
   rules: string
+  hideDetail: string
 }
 
 export type InputRulesType = (v: string | number) => string | boolean
@@ -103,6 +104,11 @@ export const inputProps: CustomComponentObjectPropsOptions<InputProps> = {
     type: Array,
     default: () => [] as Array<InputRulesType>,
     required: false
+  },
+  hideDetail: {
+    type: Boolean,
+    default: false,
+    required: false,
   }
 }
 

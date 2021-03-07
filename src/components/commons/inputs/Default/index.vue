@@ -28,7 +28,7 @@
     </slot>
   </div>
   <div
-    v-if="errorMessage"
+    v-if="errorMessage && !hideDetail"
     :class="detailStyle"
   >
     {{ errorMessage }}

@@ -28,6 +28,7 @@
       :border="border"
       :focus="focus"
       :rules="rules"
+      :hide-detail="hideDetail"
       @update:value="onInput"
     >
       <template
