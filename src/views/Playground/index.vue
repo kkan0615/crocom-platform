@@ -1,6 +1,7 @@
 <template>
-  <div>
-    {{ msg }}
+  <div
+    class="p-1"
+  >
     <t-button
       class="mr-1"
       @click="test"
@@ -37,10 +38,32 @@
       placeholder="placeholder"
     />
     <t-label-input
+      color="primary"
       label="Dense Label input"
       dense
       placeholder="placeholder"
     />
+    <t-label-input
+      color="primary"
+      label="Dense Label input with pre-append"
+      dense
+      placeholder="placeholder"
+      pre-append
+    >
+      <template
+        #preAppend
+      >
+        temp
+      </template>
+    </t-label-input>
+    <t-label-input
+      v-model:value="msg"
+      label="error test"
+      dense
+      placeholder="placeholder"
+      :rules="rules"
+    />
+    {{ msg }}
   </div>
 </template>
 
@@ -49,6 +72,7 @@ import { ref, defineComponent } from 'vue'
 import TButton from '@/components/commons/Button/index.vue'
 import THorizontalInput from '@/components/commons/inputs/Horizontal/index.vue'
 import TLabelInput from '@/components/commons/inputs/Label/index.vue'
+import { InputRulesType } from '@/components/commons/inputs/Default/types'
 
 export default defineComponent({
   name: 'Playground',
@@ -60,6 +84,17 @@ export default defineComponent({
   setup () {
     const msg = ref('Playground File')
     const border = ref(true)
+    const rules = ref([
+      v => !!v || 'value is required',
+      (v: string) => {
+        if (!v) return true
+
+        if (v.length > 5) return 'value length is over 5'
+
+        return true
+      }
+    ] as Array<InputRulesType>)
+
     const test = () => {
       alert('clicked!')
     }
@@ -67,6 +102,7 @@ export default defineComponent({
     return {
       msg,
       border,
+      rules,
       test
     }
   }

@@ -2,6 +2,7 @@
   <div
     :class="wrapperStyle"
   >
+    <!-- Label Field -->
     <label
       :class="labelStyle"
       :for="id"
@@ -12,22 +13,39 @@
         {{ label }}
       </slot>
     </label>
+    <!-- Input field -->
     <t-default-input
       :id="id"
+      :value="value"
       :disabled="disabled"
       :placeholder="placeholder"
       :type="type"
       :dense="dense"
       :shadow="shadow"
       :pre-append="preAppend"
-    />
+      :color="color"
+      :block="block"
+      :border="border"
+      :focus="focus"
+      :rules="rules"
+      :hide-detail="hideDetail"
+      @update:value="onInput"
+    >
+      <template
+        #preAppend
+      >
+        <slot
+          name="preAppend"
+        />
+      </template>
+    </t-default-input>
   </div>
 </template>
 
 <script lang="ts">
-import { ref, defineComponent, computed } from 'vue'
+import { defineComponent, computed } from 'vue'
 import TDefaultInput from '@/components/commons/inputs/Default/index.vue'
-import inputProps from '@/components/commons/inputs/Default/types/index.ts'
+import { inputProps } from '@/components/commons/inputs/Default/types/index.ts'
 
 export default defineComponent({
   name: 'TLabelInput',
@@ -42,30 +60,41 @@ export default defineComponent({
       required: false
     },
   },
-  setup (props) {
-    const msg = ref('Home File')
+  emits: [
+    'update:value',
+  ],
+  setup (props, context) {
+
+    const onInput = (value: string | number) => {
+      context.emit('update:value', value)
+    }
+
     const wrapperStyle = computed(() => {
       return {
-        'my-5': true,
-        'text-sm': props.dense,
-        'text-base': !props.dense,
         'w-full': true,
         'font-bold': true,
+        'text-sm': props.dense,
+        'text-base': !props.dense,
         'shadow-md': props.shadow,
       }
     })
 
     const labelStyle = computed(() => {
-      return {
+      const style: Record<string, boolean> = {
         'block': true,
         'text-black': true,
       }
+
+      if (props.color)
+        style[`text-${props.color}`] = true
+
+      return style
     })
 
     return {
-      msg,
       wrapperStyle,
       labelStyle,
+      onInput,
     }
   }
 })
