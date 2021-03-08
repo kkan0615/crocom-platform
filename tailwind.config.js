@@ -35,7 +35,7 @@ module.exports = {
       textPrimary: 'var(--color-textPrimary)',
       'blueGray': 'var(--color-blueGray)',
       'blueGray-blur': 'var(--color-blueGray-blur)',
-      'blueGray-accent': 'var(--color-blueGray-primary)',
+      'blueGray-accent': 'var(--color-blueGray-accent)',
     }
   },
   variants: {

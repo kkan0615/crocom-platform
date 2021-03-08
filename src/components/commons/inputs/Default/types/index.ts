@@ -1,7 +1,8 @@
 import { CustomComponentObjectPropsOptions } from '@/types/vue/props'
 import { v4 } from 'uuid'
 
-export interface Input {
+export interface InputProps {
+  value: string
   id: string
   placeholder: string
   type: string
@@ -10,14 +11,24 @@ export interface Input {
   disabled: string
   color: string
   border: string
+  focus: string
   flat: string
   rounded: string
   block: string
   shadow: string
   dense: string
+  rules: string
+  hideDetail: string
 }
 
-export const inputProps: CustomComponentObjectPropsOptions<Input> = {
+export type InputRulesType = (v: string | number) => string | boolean
+
+export const inputProps: CustomComponentObjectPropsOptions<InputProps> = {
+  value: {
+    type: [String, Number],
+    required: false,
+    default: ''
+  },
   id: {
     type: String,
     default: v4(),
@@ -50,12 +61,17 @@ export const inputProps: CustomComponentObjectPropsOptions<Input> = {
   },
   color: {
     type: String,
-    default: 'blue',
+    default: '',
     required: false,
   },
   border: {
     type: Boolean,
     default: false,
+    required: false,
+  },
+  focus: {
+    type: Boolean,
+    default: true,
     required: false,
   },
   flat: {
@@ -84,6 +100,16 @@ export const inputProps: CustomComponentObjectPropsOptions<Input> = {
     default: false,
     required: false,
   },
+  rules: {
+    type: Array,
+    default: () => [] as Array<InputRulesType>,
+    required: false
+  },
+  hideDetail: {
+    type: Boolean,
+    default: false,
+    required: false,
+  }
 }
 
 export default inputProps
