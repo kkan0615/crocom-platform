@@ -1,6 +1,6 @@
 <template>
   <!-- Sidebar -->
-  <aside class="flex-shrink-0 hidden w-64 bg-white border-r dark:border-blue-800 dark:bg-darker md:block">
+  <aside class="flex-shrink-0 w-56 bg-white border-r dark:border-blue-800 dark:bg-darker">
     <div class="flex flex-col h-screen">
       <!-- Sidebar links -->
       <nav
@@ -20,7 +20,7 @@
             :aria-expanded="(open || isActive) ? 'true' : 'false'"
             @click="$event.preventDefault(); open = !open"
           >
-            <span aria-hidden="true">
+            <span>
               <svg
                 class="w-5 h-5"
                 xmlns="http://www.w3.org/2000/svg"
@@ -39,7 +39,6 @@
             <span class="ml-2 text-sm"> Dashboards </span>
             <span
               class="ml-auto"
-              aria-hidden="true"
             >
               <!-- active class 'rotate-180' -->
               <svg

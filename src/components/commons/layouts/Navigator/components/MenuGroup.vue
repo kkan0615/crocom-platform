@@ -1,10 +1,26 @@
 <template>
   <div
     class="flex items-center p-2 text-gray-500 transition-colors rounded-md dark:text-light hover:bg-blue-100 dark:hover:bg-blue-600"
+    role="menuGroup"
+    @click="handleMenuGroup"
   >
     <span>
+      <slot
+        name="icon"
+      />
+    </span>
+    <span class="ml-2 text-sm">
+      <slot
+        name="label"
+      />
+    </span>
+    <span
+      class="ml-auto"
+    >
+      <!-- active class 'rotate-180' -->
       <svg
-        class="w-5 h-5"
+        class="w-4 h-4 transition-transform transform"
+        :class="{ 'rotate-180': isOpen }"
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 24 24"
@@ -14,29 +30,45 @@
           stroke-linecap="round"
           stroke-linejoin="round"
           stroke-width="2"
-          d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+          d="M19 9l-7 7-7-7"
         />
       </svg>
-      <slot
-        name="icon"
-      />
-    </span>
-    <span class="ml-2 text-sm">
-      <slot />
     </span>
   </div>
+  <slot
+    v-if="isOpen"
+  />
 </template>
 
 <script lang="ts">
-import { ref, defineComponent } from 'vue'
+import { ref, defineComponent, watch } from 'vue'
 
 export default defineComponent({
   name: 'TMenuGroup',
-  setup () {
-    const msg = ref('Home File')
+  props: {
+    open: {
+      type: Boolean,
+      required: false,
+      default: false
+    }
+  },
+  emits: [
+    'update:open'
+  ],
+  setup (props, context) {
+    const isOpen = ref(props.open)
+    watch(() => props.open, (newValue: boolean) => {
+      isOpen.value = newValue
+    })
+
+    const handleMenuGroup = () => {
+      isOpen.value = !isOpen.value
+      context.emit('update:open', isOpen)
+    }
 
     return {
-      msg,
+      isOpen,
+      handleMenuGroup
     }
   }
 })
