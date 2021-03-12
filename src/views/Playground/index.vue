@@ -1,6 +1,6 @@
 <template>
   <div
-    class="p-1"
+    class="p-1 w-full"
   >
     <t-button
       class="mr-1"
@@ -64,6 +64,47 @@
       :rules="rules"
     />
     {{ msg }}
+
+    <t-list
+      border
+    >
+      <t-icon-list>
+        <img
+          class="rounded-full"
+          alt="A"
+          src="https://randomuser.me/api/portraits/men/62.jpg"
+        >
+      </t-icon-list>
+      <t-content-list>
+        <t-title-list>
+          Jack John
+        </t-title-list>
+        <t-subtitle-list>
+          CEO &amp; managin director
+        </t-subtitle-list>
+      </t-content-list>
+    </t-list>
+
+    <br>
+
+    <!-- 메뉴처럼 나오는거 -->
+    <t-list>
+      <t-icon-list>
+        <img
+          class="rounded-full"
+          alt="A"
+          src="https://randomuser.me/api/portraits/men/62.jpg"
+        >
+      </t-icon-list>
+      <t-content-list>
+        <t-title-list>
+          menu
+        </t-title-list>
+        <t-subtitle-list>
+          CEO &amp; managin director
+        </t-subtitle-list>
+      </t-content-list>
+    </t-list>
   </div>
 </template>
 
@@ -73,6 +114,11 @@ import TButton from '@/components/commons/Button/index.vue'
 import THorizontalInput from '@/components/commons/inputs/Horizontal/index.vue'
 import TLabelInput from '@/components/commons/inputs/Label/index.vue'
 import { InputRulesType } from '@/components/commons/inputs/Default/types'
+import TList from '@/components/commons/List/index.vue'
+import TIconList from '@/components/commons/List/components/icon.vue'
+import TContentList from '@/components/commons/List/components/content.vue'
+import TTitleList from '@/components/commons/List/components/title.vue'
+import TSubtitleList from '@/components/commons/List/components/subtitle.vue'
 
 export default defineComponent({
   name: 'Playground',
@@ -80,6 +126,11 @@ export default defineComponent({
     TButton,
     THorizontalInput,
     TLabelInput,
+    TList,
+    TIconList,
+    TContentList,
+    TTitleList,
+    TSubtitleList,
   },
   setup () {
     const msg = ref('Playground File')
