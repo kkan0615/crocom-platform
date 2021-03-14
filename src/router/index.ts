@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import GeneralLayout from '@/layouts/general/index.vue'
+import authRoutes from '@/router/modules/auth'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -28,6 +29,7 @@ const routes: Array<RouteRecordRaw> = [
       }
     ]
   },
+  ...authRoutes
 ]
 
 const router = createRouter({

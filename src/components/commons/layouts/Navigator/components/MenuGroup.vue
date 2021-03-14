@@ -1,7 +1,8 @@
 <template>
   <div
-    class="flex items-center p-2 text-gray-500 transition-colors rounded-md dark:text-light hover:bg-blue-100 dark:hover:bg-blue-600"
-    role="menuGroup"
+    class="flex items-center p-2 text-gray-500 transition-colors rounded-md dark:text-light cursor-pointer"
+    :class="wrapperStyle"
+    role="menu"
     @click="handleMenuGroup"
   >
     <span>
@@ -37,11 +38,12 @@
   </div>
   <slot
     v-if="isOpen"
+    role="menuitem"
   />
 </template>
 
 <script lang="ts">
-import { ref, defineComponent, watch } from 'vue'
+import { ref, defineComponent, watch, computed } from 'vue'
 
 export default defineComponent({
   name: 'TMenuGroup',
@@ -50,6 +52,11 @@ export default defineComponent({
       type: Boolean,
       required: false,
       default: false
+    },
+    color: {
+      type: String,
+      required: false,
+      default: 'primary'
     }
   },
   emits: [
@@ -66,9 +73,17 @@ export default defineComponent({
       context.emit('update:open', isOpen)
     }
 
+    const wrapperStyle = computed(() => {
+      return {
+        [`hover:bg-${props.color}-blur`]: true,
+        [`dark:hover:bg-${props.color}`]: true,
+      }
+    })
+
     return {
       isOpen,
-      handleMenuGroup
+      handleMenuGroup,
+      wrapperStyle
     }
   }
 })

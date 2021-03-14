@@ -6,9 +6,12 @@ import { InjectionKey } from 'vue'
 import { createLogger, createStore, Store, useStore as baseUseStore, } from 'vuex'
 import { UserState } from '@/store/modules/user/state'
 import { userModule, Store as UserStore } from '@/store/modules/user'
+import { ApplicationState } from '@/store/modules/application/state'
+import { applicationModule } from '@/store/modules/application'
 
 export interface RootState {
   user: UserState
+  application: ApplicationState
 }
 
 export type RootStore = UserStore<Pick<RootState, 'user'>>
@@ -20,6 +23,7 @@ export const store = createStore<RootState>({
   plugins,
   modules: {
     user: userModule,
+    application: applicationModule
   },
 })
 export default function useStore (): RootStore {

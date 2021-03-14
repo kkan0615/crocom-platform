@@ -104,7 +104,7 @@
 import { ref, defineComponent } from 'vue'
 
 export default defineComponent({
-  name: 'Navigator',
+  name: 'TNavigator',
   setup () {
     const msg = ref('Navigator')
 
