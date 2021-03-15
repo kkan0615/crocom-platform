@@ -33,7 +33,7 @@ VuexStore<S>,
 
 export const userModule: Module<UserState, RootState> = {
   // @TODO: namespaced 어떻게 쓸지고민하기
-  // namespaced: true,
+  namespaced: true,
   state: userState,
   getters: userGetters,
   mutations: userMutations,

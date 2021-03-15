@@ -10,15 +10,14 @@
       </div>
       <div
         class="flex-shrink-0 justify-end"
+        @click="changeNavigatorStatus"
       >
         <t-icon>
           first_page
         </t-icon>
       </div>
     </div>
-    <t-menu-group
-      :open="open"
-    >
+    <t-menu-group>
       <template
         #icon
       >
@@ -51,7 +50,6 @@
     >
       <t-button
         block
-        @click="open = !open"
       >
         <span>Customize</span>
       </t-button>
@@ -60,13 +58,14 @@
 </template>
 
 <script lang="ts">
-import { ref, defineComponent, computed } from 'vue'
+import { computed, defineComponent } from 'vue'
 import TNavigator from '@/components/commons/layouts/Navigator/index.vue'
 import TButton from '@/components/commons/Button/index.vue'
 import TMenuGroup from '@/components/commons/layouts/Navigator/components/MenuGroup.vue'
 import TIcon from '@/components/commons/Icon/index.vue'
 import TSubMenu from '@/components/commons/layouts/Navigator/components/SubMenu.vue'
 import useStore from '@/store'
+import { ApplicationActionTypes } from '@/store/modules/application/actions'
 
 export default defineComponent({
   name: 'Home',
@@ -80,10 +79,16 @@ export default defineComponent({
   setup () {
     const store = useStore()
     const application = computed(() => store.state.application)
-    const msg = ref('Home File')
+    const navigatorVisible = computed(() => application.value.navigator)
+
+    const changeNavigatorStatus = async () => {
+      console.log(application.value.navigator)
+      await store.dispatch(ApplicationActionTypes.CHANGE_NAVIGATOR)
+    }
 
     return {
-      msg,
+      navigatorVisible,
+      changeNavigatorStatus
     }
   }
 })

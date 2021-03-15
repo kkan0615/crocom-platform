@@ -26,7 +26,7 @@ VuexStore<S>,
 } & {
   dispatch<K extends keyof ApplicationActions>(
     key: K,
-    payload: Parameters<ApplicationActions[K]>[1],
+    payload?: Parameters<ApplicationActions[K]>[1],
     options?: DispatchOptions
   ): ReturnType<ApplicationActions[K]>
 }
