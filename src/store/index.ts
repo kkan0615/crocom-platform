@@ -7,14 +7,19 @@ import { createLogger, createStore, Store, useStore as baseUseStore, } from 'vue
 import { UserState } from '@/store/modules/user/state'
 import { userModule, Store as UserStore } from '@/store/modules/user'
 import { ApplicationState } from '@/store/modules/application/state'
-import { applicationModule } from '@/store/modules/application'
+import { applicationModule, Store as ApplicationStore } from '@/store/modules/application'
 
 export interface RootState {
   user: UserState
   application: ApplicationState
 }
 
-export type RootStore = UserStore<Pick<RootState, 'user'>>
+export type RootStore =
+  UserStore<Pick<RootState, 'user'>> &
+  ApplicationStore<Pick<RootState, 'application'>>
+  // ApplicationStore<Pick<RootState, 'application'>> &
+  // UserStore<Pick<RootState, 'user'>>
+
 
 // define injection key
 export const key: InjectionKey<Store<RootState>> = Symbol()
