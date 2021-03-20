@@ -1,17 +1,15 @@
 <template>
   <div
-    class="inline-block flex"
+    class="relative"
+    role="menu"
     @mouseover="isVisible = true"
     @mouseleave="isVisible = false"
     @keydown.enter="isVisible = !isVisible"
+    @click="isVisible = true"
   >
-    <div
-      class="relative"
-    >
-      <slot
-        name="activator"
-      />
-    </div>
+    <slot
+      name="activator"
+    />
     <transition
       enter-active-class="transition duration-300 ease-out transform"
       enter-class="-translate-y-3 scale-95 opacity-0"
@@ -22,7 +20,8 @@
     >
       <div
         v-show="isVisible"
-        class="absolute left-16 z-20 py-1 bg-white border border-gray-200 rounded-md shadow-xl"
+        class="absolute mt-2 rounded-md shadow-lg"
+        :class="contentClasses"
       >
         <slot />
       </div>
@@ -31,43 +30,30 @@
 </template>
 
 <script lang="ts">
-import { ref, defineComponent } from 'vue'
+import { ref, defineComponent, computed } from 'vue'
 
 export default defineComponent({
   name: 'TFlyoutMenu',
   props: {
-    top: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
     right: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
-    bottom: {
-      type: Boolean,
-      required: false,
-      default: true,
-    },
-    left: {
       type: Boolean,
       required: false,
       default: false,
     }
   },
-  setup () {
+  setup (props) {
     const isVisible = ref(false)
+
+    const contentClasses = computed(() => {
+      return {
+        'right-0': props.right,
+      }
+    })
 
     return {
       isVisible,
+      contentClasses
     }
   }
 })
 </script>
-<style>
-  .test {
-    position: relative-to first-sibling(#t-flyout-menu)
-  }
-</style>

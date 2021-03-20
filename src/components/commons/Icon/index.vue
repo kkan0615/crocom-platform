@@ -2,6 +2,7 @@
   <i
     class="material-icons"
     :class="iconStyle"
+    style="cursor: pointer"
   >
     <slot />
   </i>

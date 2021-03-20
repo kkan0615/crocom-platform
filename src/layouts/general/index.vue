@@ -1,13 +1,12 @@
 <template>
   <div
-    class="flex h-full"
+    class="flex w-full h-full"
   >
-    <app-bar />
+    <navigator />
     <div
-      class="pt-12 flex"
+      class="w-full"
     >
-      <sub-navigator />
-      <navigator />
+      <app-bar />
       <main class="h-full p-4 space-y-4">
         {{ msg }}
         <router-view />
@@ -18,7 +17,6 @@
 
 <script lang="ts">
 import { ref, defineComponent } from 'vue'
-import SubNavigator from '@/layouts/general/components/SubNavigator.vue'
 import Navigator from '@/layouts/general/components/Navigator.vue'
 import AppBar from '@/layouts/general/components/Appbar.vue'
 
@@ -26,7 +24,6 @@ export default defineComponent({
   name: 'GeneralLayout',
   components: {
     Navigator,
-    SubNavigator,
     AppBar
   },
   setup () {
