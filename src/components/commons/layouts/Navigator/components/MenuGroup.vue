@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex items-center p-2 text-gray-500 transition-colors rounded-md dark:text-light cursor-pointer"
+    class="flex items-center p-2 text-gray-500 transition-colors rounded-md dark:text-white cursor-pointer hover:text-white"
     :class="wrapperStyle"
     role="menu"
     @click="handleMenuGroup"
@@ -56,7 +56,7 @@ export default defineComponent({
     color: {
       type: String,
       required: false,
-      default: 'primary'
+      default: 'blue'
     }
   },
   emits: [
@@ -75,7 +75,7 @@ export default defineComponent({
 
     const wrapperStyle = computed(() => {
       return {
-        [`hover:bg-${props.color}-blur`]: true,
+        [`hover:bg-${props.color}-300`]: true,
         [`dark:hover:bg-${props.color}`]: true,
       }
     })

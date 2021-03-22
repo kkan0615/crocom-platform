@@ -1,5 +1,7 @@
 <template>
-  <t-navigator>
+  <t-navigator
+    v-if="navigatorVisible"
+  >
     <div
       class="flex"
     >
@@ -68,7 +70,7 @@ import useStore from '@/store'
 import { ApplicationActionTypes } from '@/store/modules/application/actions'
 
 export default defineComponent({
-  name: 'Home',
+  name: 'Navigator',
   components: {
     TNavigator,
     TButton,

@@ -1,28 +1,38 @@
 <template>
-  <header
-    class="flex items-center top-0 left-0 w-full h-12 bg-primary"
+  <div
     :class="wrapperClasses"
   >
     <slot />
-  </header>
+  </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, computed } from 'vue'
 
 export default defineComponent({
-  name: 'TAppBar',
+  name: 'TCard',
   props: {
-    fixed: {
+    width: {
+      type: [String, Number],
+      required: false,
+      default: 'full'
+    },
+    shadow: {
       type: Boolean,
       required: false,
-      default: false
-    }
+      default: true
+    },
+    shadowType: {
+      type: String,
+      required: false,
+      default: 'lg'
+    },
   },
   setup (props) {
     const wrapperClasses = computed(() => {
       return {
-        fixed: props.fixed
+        [`w-${props.width}`]: true,
+        [`shadow-${props.shadowType}`]: props.shadow,
       }
     })
 
