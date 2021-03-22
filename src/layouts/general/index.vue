@@ -1,30 +1,37 @@
 <template>
   <div
-    class="flex w-full h-full"
+    class="h-full"
   >
-    <navigator />
+    <app-bar />
     <div
-      class="w-full"
+      class="pt-12 h-full"
     >
-      <app-bar />
-      <main class="h-full p-4 space-y-4">
-        {{ msg }}
-        <router-view />
-      </main>
+      <div
+        class="flex h-full"
+      >
+        <sub-navigator />
+        <navigator />
+        <main class="p-4 space-y-4">
+          {{ msg }}
+          <router-view />
+        </main>
+      </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { ref, defineComponent } from 'vue'
+import SubNavigator from '@/layouts/general/components/SubNavigator.vue'
 import Navigator from '@/layouts/general/components/Navigator.vue'
 import AppBar from '@/layouts/general/components/Appbar.vue'
 
 export default defineComponent({
   name: 'GeneralLayout',
   components: {
+    SubNavigator,
     Navigator,
-    AppBar
+    AppBar,
   },
   setup () {
     const msg = ref('GeneralLayout File')

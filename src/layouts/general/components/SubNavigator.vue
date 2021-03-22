@@ -1,5 +1,7 @@
 <template>
-  <t-sub-navigator>
+  <t-sub-navigator
+    v-if="subNavigatorVisible"
+  >
     <span
       class="justify-center"
     >
@@ -23,79 +25,31 @@
     >
       face
     </t-icon>
-    <t-flyout-menu>
-      <template
-        #activator
-      >
-        <t-icon
-          class="text-5xl"
-        >
-          east
-        </t-icon>
-      </template>
-      <a
-        href="#"
-        class="block w-full px-4 py-2 font-medium text-gray-700 whitespace-no-wrap hover:bg-gray-100 focus:outline-none hover:text-gray-900 focus:text-gray-900 focus:shadow-outline transition duration-300 ease-in-out"
-      >Submenu Link #1</a>
-      <a
-        href="#"
-        class="block w-full px-4 py-2 font-medium text-gray-700 whitespace-no-wrap hover:bg-gray-100 focus:outline-none hover:text-gray-900 focus:text-gray-900 focus:shadow-outline transition duration-300 ease-in-out"
-      >Submenu Link #2</a>
-      <a
-        href="#"
-        class="block w-full px-4 py-2 font-medium text-gray-700 whitespace-no-wrap hover:bg-gray-100 focus:outline-none hover:text-gray-900 focus:text-gray-900 focus:shadow-outline transition duration-300 ease-in-out"
-      >Submenu Link #3</a>
-      <a
-        href="#"
-        class="block w-full px-4 py-2 font-medium text-gray-700 whitespace-no-wrap hover:bg-gray-100 focus:outline-none hover:text-gray-900 focus:text-gray-900 focus:shadow-outline transition duration-300 ease-in-out"
-      >Submenu Link #4</a>
-    </t-flyout-menu>
-    <t-flyout-menu>
-      <template
-        #activator
-      >
-        <t-icon
-          class="text-5xl"
-        >
-          south
-        </t-icon>
-      </template>
-      <a
-        href="#"
-        class="block w-full px-4 py-2 font-medium text-gray-700 whitespace-no-wrap hover:bg-gray-100 focus:outline-none hover:text-gray-900 focus:text-gray-900 focus:shadow-outline transition duration-300 ease-in-out"
-      >Submenu Link #1</a>
-      <a
-        href="#"
-        class="block w-full px-4 py-2 font-medium text-gray-700 whitespace-no-wrap hover:bg-gray-100 focus:outline-none hover:text-gray-900 focus:text-gray-900 focus:shadow-outline transition duration-300 ease-in-out"
-      >Submenu Link #2</a>
-      <a
-        href="#"
-        class="block w-full px-4 py-2 font-medium text-gray-700 whitespace-no-wrap hover:bg-gray-100 focus:outline-none hover:text-gray-900 focus:text-gray-900 focus:shadow-outline transition duration-300 ease-in-out"
-      >Submenu Link #3</a>
-      <a
-        href="#"
-        class="block w-full px-4 py-2 font-medium text-gray-700 whitespace-no-wrap hover:bg-gray-100 focus:outline-none hover:text-gray-900 focus:text-gray-900 focus:shadow-outline transition duration-300 ease-in-out"
-      >Submenu Link #4</a>
-    </t-flyout-menu>
     <template
       #footer
     >
       <t-flyout-menu>
-        <t-icon
-          class="text-5xl"
+        <template
+          #activator
         >
-          auth
-        </t-icon>
+          <t-icon
+            class="text-5xl"
+          >
+            auth
+          </t-icon>
+        </template>
+        test
       </t-flyout-menu>
     </template>
   </t-sub-navigator>
 </template>
 
 <script lang="ts">
-import { ref, defineComponent } from 'vue'
+import { ref, defineComponent, computed } from 'vue'
 import TSubNavigator from '@/components/commons/layouts/Navigator/components/SubNavigator.vue'
 import TIcon from '@/components/commons/Icon/index.vue'
 import TFlyoutMenu from '@/components/commons/menu/Flyout/index.vue'
+import useStore from '@/store'
 
 export default defineComponent({
   name: 'SubNavigatorGeneral',
@@ -105,10 +59,12 @@ export default defineComponent({
     TFlyoutMenu
   },
   setup () {
-    const msg = ref('Home File')
+    const store = useStore()
+    const application = computed(() => store.state.application)
+    const subNavigatorVisible = computed(() => application.value.subNavigator)
 
     return {
-      msg,
+      subNavigatorVisible,
     }
   }
 })

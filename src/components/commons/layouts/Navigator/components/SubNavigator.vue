@@ -1,14 +1,15 @@
 <template>
-  <aside class="flex-shrink-0 hidden w-16 bg-white border-r dark:border-blue-800 dark:bg-darker md:block">
-    <div class="flex flex-col h-screen">
-      <nav
-        class="flex-1 px-2 py-4 space-y-2 overflow-y-hidden hover:overflow-y-auto h-full text-center"
-      >
-        <slot />
-      </nav>
-    </div>
+  <!-- Sidebar -->
+  <aside class="flex flex-col h-full flex-shrink-0 w-16 bg-white border-r dark:border-blue-800 dark:bg-darker">
+    <!-- Sidebar links -->
+    <nav
+      aria-label="Main"
+      class="flex-1 px-2 py-4 space-y-2 overflow-y-hidden hover:overflow-y-auto h-full"
+    >
+      <slot />
+    </nav>
     <!-- Sidebar footer -->
-    <div class="flex-shrink-0 px-2 py-4 space-y-2">
+    <div class="flex-shrink-0">
       <slot
         name="footer"
       />
