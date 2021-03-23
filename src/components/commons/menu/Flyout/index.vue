@@ -2,6 +2,7 @@
   <div
     class="relative"
     role="menu"
+    :aria-expanded="isVisible"
     @mouseover="isVisible = true"
     @mouseleave="isVisible = false"
     @keydown.enter="isVisible = !isVisible"
@@ -20,7 +21,7 @@
     >
       <div
         v-show="isVisible"
-        class="absolute mt-2 rounded-md shadow-lg"
+        class="absolute z-10"
         :class="contentClasses"
       >
         <slot />
@@ -35,10 +36,30 @@ import { ref, defineComponent, computed } from 'vue'
 export default defineComponent({
   name: 'TFlyoutMenu',
   props: {
+    top: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
     right: {
       type: Boolean,
       required: false,
       default: false,
+    },
+    bottom: {
+      type: Boolean,
+      required: false,
+      default: true,
+    },
+    left: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+    shadow: {
+      type: String,
+      required: false,
+      default: 'md',
     }
   },
   setup (props) {
@@ -46,13 +67,19 @@ export default defineComponent({
 
     const contentClasses = computed(() => {
       return {
-        'right-0': props.right,
+        'right-0': true,
+        ['w-full']: props.left || props.right || props.top,
+        'right-full': props.left,
+        'left-full': props.right,
+        'bottom-2/4': props.right,
+        'bottom-full': props.top,
+        [`shadow-${props.shadow}`]: props.shadow
       }
     })
 
     return {
       isVisible,
-      contentClasses
+      contentClasses,
     }
   }
 })

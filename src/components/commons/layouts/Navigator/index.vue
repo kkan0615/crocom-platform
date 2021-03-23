@@ -9,7 +9,7 @@
       <slot />
     </nav>
     <!-- Sidebar footer -->
-    <div class="flex-shrink-0 px-2 py-4 space-y-2">
+    <div class="mt-auto px-2 py-4 space-y-2">
       <slot
         name="footer"
       />

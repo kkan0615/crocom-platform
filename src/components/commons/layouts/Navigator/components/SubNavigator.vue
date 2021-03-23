@@ -1,15 +1,15 @@
 <template>
   <!-- Sidebar -->
-  <aside class="flex flex-col h-full flex-shrink-0 w-16 bg-white border-r dark:border-blue-800 dark:bg-darker">
+  <aside class="flex flex-col h-full items-center w-16 bg-white border-r dark:border-blue-800 dark:bg-darker">
     <!-- Sidebar links -->
     <nav
       aria-label="Main"
-      class="flex-1 px-2 py-4 space-y-2 overflow-y-hidden hover:overflow-y-auto h-full"
+      class="flex-1 py-4 space-y-2 h-full"
     >
       <slot />
     </nav>
     <!-- Sidebar footer -->
-    <div class="flex-shrink-0">
+    <div class="mt-auto">
       <slot
         name="footer"
       />

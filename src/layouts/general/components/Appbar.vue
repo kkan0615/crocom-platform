@@ -1,6 +1,7 @@
 <template>
   <t-app-bar
     class="left-0 top-0 absolute"
+    style="z-index: 100"
   >
     <t-icon
       class="text-white ml-2"
@@ -12,9 +13,7 @@
     <div
       class="ml-auto mr-2"
     >
-      <t-flyout-menu
-        right
-      >
+      <t-flyout-menu>
         <template
           #activator
         >
