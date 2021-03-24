@@ -6,23 +6,19 @@
       #activator
     >
       <div
-        class="hover:bg-blue-600"
+        class="w-14 h-14 cursor-pointer"
       >
-        <div
-          class="border-2 w-14 h-14 rounded-lg cursor-pointer"
+        <img
+          class="h-full w-full rounded-full"
+          :src="teamProp.img"
+          :alt="teamProp.title"
         >
-          <img
-            class="h-full w-full"
-            :src="team.img"
-            :alt="team.title"
-          >
-        </div>
       </div>
     </template>
     <t-card
       width="14"
     >
-      {{ team.title }}
+      {{ teamProp.title }}
     </t-card>
   </t-flyout-menu>
 </template>
@@ -41,7 +37,7 @@ export default defineComponent({
   },
   props: {
     team: {
-      type: Object as TeamGroup,
+      type: Object,
       required: false,
       default: () => {
         return {} as TeamGroup
@@ -51,7 +47,7 @@ export default defineComponent({
   setup (props) {
     const msg = ref('temp')
     return {
-      msg
+      teamProp: props.team as TeamGroup
     }
   }
 })
