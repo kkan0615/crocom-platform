@@ -1,6 +1,7 @@
 <template>
   <t-sub-navigator
     v-if="subNavigatorVisible"
+    class="pa-2"
   >
     <t-icon
       class="text-5xl"
@@ -23,6 +24,14 @@
         test
       </t-card>
     </t-flyout-menu>
+    <!-- @TODO, Change to loop and get from store -->
+    <team-menu
+      :team="{
+        id: 2,
+        img: 'https://picsum.photos/200/300',
+        title: 'start road'
+      }"
+    />
     <template
       #footer
     >
@@ -49,6 +58,7 @@
 <script lang="ts">
 import { ref, defineComponent, computed } from 'vue'
 import TSubNavigator from '@/components/commons/layouts/Navigator/components/SubNavigator.vue'
+import TeamMenu from '@/layouts/general/components/TeamMenu.vue'
 import TIcon from '@/components/commons/Icon/index.vue'
 import TFlyoutMenu from '@/components/commons/menu/Flyout/index.vue'
 import TCard from '@/components/commons/Card/index.vue'
@@ -60,7 +70,8 @@ export default defineComponent({
     TSubNavigator,
     TIcon,
     TFlyoutMenu,
-    TCard
+    TCard,
+    TeamMenu
   },
   setup () {
     const store = useStore()

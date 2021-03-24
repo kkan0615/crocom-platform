@@ -4,7 +4,7 @@
     <!-- Sidebar links -->
     <nav
       aria-label="Main"
-      class="flex-1 py-4 space-y-2 h-full"
+      class="flex flex-col py-4 space-y-2 h-full items-center"
     >
       <slot />
     </nav>

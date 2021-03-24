@@ -71,7 +71,7 @@ export default defineComponent({
         ['w-full']: props.left || props.right || props.top,
         'right-full': props.left,
         'left-full': props.right,
-        'bottom-2/4': props.right,
+        'bottom-1/4': props.right,
         'bottom-full': props.top,
         [`shadow-${props.shadow}`]: props.shadow
       }
