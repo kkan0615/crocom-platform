@@ -6,13 +6,20 @@
       #activator
     >
       <div
-        class="w-14 h-14 cursor-pointer"
+        class="w-16 h-16 cursor-pointer  border-l-4 border-red-300"
       >
-        <img
-          class="h-full w-full rounded-full"
-          :src="teamProp.img"
-          :alt="teamProp.title"
+        <div
+          class="w-full h-full rounded-lg flex justify-center items-center"
         >
+          <!-- @TODO: Component로 변경하기 -->
+          <img
+            class="w-14 h-14 rounded-lg bg-gray-500"
+            :class="{ 'animate-pulse': !imageLoaded }"
+            :src="teamProp.img"
+            :alt="teamProp.title"
+            @load="imageLoaded = true"
+          >
+        </div>
       </div>
     </template>
     <t-card
@@ -25,7 +32,7 @@
 
 <script lang="ts">
 import { ref, defineComponent } from 'vue'
-import { TeamGroup } from '@/types/model/team/teamGroup'
+import { Team } from '@/types/model/team/team'
 import TFlyoutMenu from '@/components/commons/menu/Flyout/index.vue'
 import TCard from '@/components/commons/Card/index.vue'
 
@@ -40,14 +47,16 @@ export default defineComponent({
       type: Object,
       required: false,
       default: () => {
-        return {} as TeamGroup
+        return {} as Team
       }
     }
   },
   setup (props) {
-    const msg = ref('temp')
+    const imageLoaded = ref(false)
+
     return {
-      teamProp: props.team as TeamGroup
+      imageLoaded,
+      teamProp: props.team as Team
     }
   }
 })
