@@ -23,7 +23,7 @@
     <template
       #footer
     >
-      <t-flyout-menu
+      <t-dropdown-menu
         right
       >
         <template
@@ -38,7 +38,7 @@
         <t-card>
           test
         </t-card>
-      </t-flyout-menu>
+      </t-dropdown-menu>
     </template>
   </t-sub-navigator>
 </template>
@@ -49,7 +49,7 @@ import TSubNavigator from '@/components/commons/layouts/Navigator/components/Sub
 import TeamMenu from '@/layouts/general/components/TeamMenu.vue'
 import AddTeam from '@/layouts/general/components/AddTeam.vue'
 import TIcon from '@/components/commons/Icon/index.vue'
-import TFlyoutMenu from '@/components/commons/menu/Flyout/index.vue'
+import TDropdownMenu from '@/components/commons/menu/Dropdown/index.vue'
 import TCard from '@/components/commons/Card/index.vue'
 import useStore from '@/store'
 
@@ -58,7 +58,7 @@ export default defineComponent({
   components: {
     TSubNavigator,
     TIcon,
-    TFlyoutMenu,
+    TDropdownMenu,
     TCard,
     TeamMenu,
     AddTeam

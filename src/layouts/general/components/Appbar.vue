@@ -13,7 +13,7 @@
     <div
       class="ml-auto mr-2"
     >
-      <t-flyout-menu>
+      <t-dropdown-menu>
         <template
           #activator
         >
@@ -58,7 +58,7 @@
             Sign Out
           </a>
         </t-card>
-      </t-flyout-menu>
+      </t-dropdown-menu>
     </div>
   </t-app-bar>
 </template>
@@ -67,7 +67,7 @@
 import { defineComponent, computed } from 'vue'
 import TAppBar from '@/components/commons/layouts/Appbar/index.vue'
 import TIcon from '@/components/commons/Icon/index.vue'
-import TFlyoutMenu from '@/components/commons/menu/Flyout/index.vue'
+import TDropdownMenu from '@/components/commons/menu/Dropdown/index.vue'
 import TCard from '@/components/commons/Card/index.vue'
 import useStore from '@/store'
 import { ApplicationActionTypes } from '@/store/modules/application/actions'
@@ -77,7 +77,7 @@ export default defineComponent({
   components: {
     TAppBar,
     TIcon,
-    TFlyoutMenu,
+    TDropdownMenu,
     TCard
   },
   setup () {

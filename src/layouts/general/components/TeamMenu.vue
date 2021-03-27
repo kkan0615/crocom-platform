@@ -1,5 +1,5 @@
 <template>
-  <t-flyout-menu
+  <t-dropdown-menu
     right
   >
     <template
@@ -27,19 +27,19 @@
     >
       {{ teamProp.title }}
     </t-card>
-  </t-flyout-menu>
+  </t-dropdown-menu>
 </template>
 
 <script lang="ts">
 import { ref, defineComponent } from 'vue'
 import { Team } from '@/types/model/team/team'
-import TFlyoutMenu from '@/components/commons/menu/Flyout/index.vue'
+import TDropdownMenu from '@/components/commons/menu/Dropdown/index.vue'
 import TCard from '@/components/commons/Card/index.vue'
 
 export default defineComponent({
   name: 'TeamMenu',
   components: {
-    TFlyoutMenu,
+    TDropdownMenu,
     TCard,
   },
   props: {
