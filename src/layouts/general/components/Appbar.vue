@@ -1,5 +1,8 @@
 <template>
-  <t-app-bar>
+  <t-app-bar
+    class="left-0 top-0 absolute"
+    style="z-index: 100"
+  >
     <t-icon
       class="text-white ml-2"
       @click="changeNavigatorStatus"
@@ -10,9 +13,7 @@
     <div
       class="ml-auto mr-2"
     >
-      <t-flyout-menu
-        right
-      >
+      <t-flyout-menu>
         <template
           #activator
         >
@@ -84,8 +85,7 @@ export default defineComponent({
     const application = computed(() => store.state.application)
 
     const changeNavigatorStatus = async () => {
-      console.log(application.value.navigator)
-      await store.dispatch(ApplicationActionTypes.CHANGE_NAVIGATOR)
+      await store.dispatch(ApplicationActionTypes.CHANGE_SUB_NAVIGATOR)
     }
 
     return {

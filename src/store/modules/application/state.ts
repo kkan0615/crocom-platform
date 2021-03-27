@@ -1,7 +1,12 @@
 export interface ApplicationState {
+  subNavigator: boolean
   navigator: boolean
 }
 
+/**
+ * navigator
+ */
 export const applicationState: ApplicationState = {
-  navigator: false
+  subNavigator: true,
+  navigator: true,
 }

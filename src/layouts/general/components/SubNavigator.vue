@@ -1,114 +1,75 @@
 <template>
-  <t-sub-navigator>
-    <span
-      class="justify-center"
-    >
-      <svg
-        class="w-12 text-center"
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-      >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-        />
-      </svg>
-    </span>
-    <t-icon
-      class="text-5xl"
-    >
-      face
-    </t-icon>
-    <t-flyout-menu>
-      <template
-        #activator
-      >
-        <t-icon
-          class="text-5xl"
-        >
-          east
-        </t-icon>
-      </template>
-      <a
-        href="#"
-        class="block w-full px-4 py-2 font-medium text-gray-700 whitespace-no-wrap hover:bg-gray-100 focus:outline-none hover:text-gray-900 focus:text-gray-900 focus:shadow-outline transition duration-300 ease-in-out"
-      >Submenu Link #1</a>
-      <a
-        href="#"
-        class="block w-full px-4 py-2 font-medium text-gray-700 whitespace-no-wrap hover:bg-gray-100 focus:outline-none hover:text-gray-900 focus:text-gray-900 focus:shadow-outline transition duration-300 ease-in-out"
-      >Submenu Link #2</a>
-      <a
-        href="#"
-        class="block w-full px-4 py-2 font-medium text-gray-700 whitespace-no-wrap hover:bg-gray-100 focus:outline-none hover:text-gray-900 focus:text-gray-900 focus:shadow-outline transition duration-300 ease-in-out"
-      >Submenu Link #3</a>
-      <a
-        href="#"
-        class="block w-full px-4 py-2 font-medium text-gray-700 whitespace-no-wrap hover:bg-gray-100 focus:outline-none hover:text-gray-900 focus:text-gray-900 focus:shadow-outline transition duration-300 ease-in-out"
-      >Submenu Link #4</a>
-    </t-flyout-menu>
-    <t-flyout-menu>
-      <template
-        #activator
-      >
-        <t-icon
-          class="text-5xl"
-        >
-          south
-        </t-icon>
-      </template>
-      <a
-        href="#"
-        class="block w-full px-4 py-2 font-medium text-gray-700 whitespace-no-wrap hover:bg-gray-100 focus:outline-none hover:text-gray-900 focus:text-gray-900 focus:shadow-outline transition duration-300 ease-in-out"
-      >Submenu Link #1</a>
-      <a
-        href="#"
-        class="block w-full px-4 py-2 font-medium text-gray-700 whitespace-no-wrap hover:bg-gray-100 focus:outline-none hover:text-gray-900 focus:text-gray-900 focus:shadow-outline transition duration-300 ease-in-out"
-      >Submenu Link #2</a>
-      <a
-        href="#"
-        class="block w-full px-4 py-2 font-medium text-gray-700 whitespace-no-wrap hover:bg-gray-100 focus:outline-none hover:text-gray-900 focus:text-gray-900 focus:shadow-outline transition duration-300 ease-in-out"
-      >Submenu Link #3</a>
-      <a
-        href="#"
-        class="block w-full px-4 py-2 font-medium text-gray-700 whitespace-no-wrap hover:bg-gray-100 focus:outline-none hover:text-gray-900 focus:text-gray-900 focus:shadow-outline transition duration-300 ease-in-out"
-      >Submenu Link #4</a>
-    </t-flyout-menu>
+  <t-sub-navigator
+    v-if="subNavigatorVisible"
+    class="pa-2"
+  >
+    <!-- @TODO, Change to loop and get from store -->
+    <team-menu
+      :team="{
+        id: 2,
+        img: 'https://picsum.photos/200/300',
+        title: 'start road'
+      }"
+    />
+    <team-menu
+      :team="{
+        id: 3,
+
+        img: 'https://picsum.photos/200/300',
+        title: 'start road'
+      }"
+    />
+    <add-team />
     <template
       #footer
     >
-      <t-flyout-menu>
-        <t-icon
-          class="text-5xl"
+      <t-flyout-menu
+        right
+      >
+        <template
+          #activator
         >
-          auth
-        </t-icon>
+          <t-icon
+            class="text-5xl"
+          >
+            person
+          </t-icon>
+        </template>
+        <t-card>
+          test
+        </t-card>
       </t-flyout-menu>
     </template>
   </t-sub-navigator>
 </template>
 
 <script lang="ts">
-import { ref, defineComponent } from 'vue'
+import { ref, defineComponent, computed } from 'vue'
 import TSubNavigator from '@/components/commons/layouts/Navigator/components/SubNavigator.vue'
+import TeamMenu from '@/layouts/general/components/TeamMenu.vue'
+import AddTeam from '@/layouts/general/components/AddTeam.vue'
 import TIcon from '@/components/commons/Icon/index.vue'
 import TFlyoutMenu from '@/components/commons/menu/Flyout/index.vue'
+import TCard from '@/components/commons/Card/index.vue'
+import useStore from '@/store'
 
 export default defineComponent({
   name: 'SubNavigatorGeneral',
   components: {
     TSubNavigator,
     TIcon,
-    TFlyoutMenu
+    TFlyoutMenu,
+    TCard,
+    TeamMenu,
+    AddTeam
   },
   setup () {
-    const msg = ref('Home File')
+    const store = useStore()
+    const application = computed(() => store.state.application)
+    const subNavigatorVisible = computed(() => application.value.subNavigator)
 
     return {
-      msg,
+      subNavigatorVisible,
     }
   }
 })

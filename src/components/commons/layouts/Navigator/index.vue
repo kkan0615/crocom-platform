@@ -1,6 +1,6 @@
 <template>
   <!-- Sidebar -->
-  <aside class="flex flex-col h-screen flex-shrink-0 w-56 bg-white border-r dark:border-blue-800 dark:bg-darker">
+  <aside class="flex flex-col h-full flex-shrink-0 w-56 bg-white border-r dark:border-blue-800 dark:bg-darker">
     <!-- Sidebar links -->
     <nav
       aria-label="Main"
@@ -9,7 +9,7 @@
       <slot />
     </nav>
     <!-- Sidebar footer -->
-    <div class="flex-shrink-0 px-2 py-4 space-y-2">
+    <div class="mt-auto px-2 py-4 space-y-2">
       <slot
         name="footer"
       />

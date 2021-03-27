@@ -31,6 +31,7 @@ export default defineComponent({
   setup (props) {
     const wrapperClasses = computed(() => {
       return {
+        'bg-white': true,
         [`w-${props.width}`]: true,
         [`shadow-${props.shadowType}`]: props.shadow,
       }
