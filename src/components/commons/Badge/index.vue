@@ -1,3 +1,7 @@
+<!--
+@TODO:
+  1. 색깔 변경 만들기
+-->
 <template>
   <!--  avatar   -->
   <!--  @TODO: 다음꺼 삭제하기 https://randomuser.me/api/portraits/men/62.jpg -->
