@@ -13,52 +13,7 @@
     <div
       class="ml-auto mr-2"
     >
-      <t-flyout-menu>
-        <template
-          #activator
-        >
-          <t-icon
-            class="text-white"
-          >
-            person
-          </t-icon>
-        </template>
-        <t-card
-          shadow
-          width="32"
-        >
-          <a
-            href="#"
-            class="block px-4 py-2 text-sm capitalize text-gray-700 hover:bg-blue-500 hover:text-white"
-          >
-            your profile
-          </a>
-          <a
-            href="#"
-            class="block px-4 py-2 text-sm capitalize text-gray-700 hover:bg-blue-500 hover:text-white"
-          >
-            Your projects
-          </a>
-          <a
-            href="#"
-            class="block px-4 py-2 text-sm capitalize text-gray-700 hover:bg-blue-500 hover:text-white"
-          >
-            Help
-          </a>
-          <a
-            href="#"
-            class="block px-4 py-2 text-sm capitalize text-gray-700 hover:bg-blue-500 hover:text-white"
-          >
-            Settings
-          </a>
-          <a
-            href="#"
-            class="block px-4 py-2 text-sm capitalize text-gray-700 hover:bg-blue-500 hover:text-white"
-          >
-            Sign Out
-          </a>
-        </t-card>
-      </t-flyout-menu>
+      <auth-menu />
     </div>
   </t-app-bar>
 </template>
@@ -66,9 +21,8 @@
 <script lang="ts">
 import { defineComponent, computed } from 'vue'
 import TAppBar from '@/components/commons/layouts/Appbar/index.vue'
+import AuthMenu from '@/layouts/general/components/AuthMenu.vue'
 import TIcon from '@/components/commons/Icon/index.vue'
-import TFlyoutMenu from '@/components/commons/menu/Flyout/index.vue'
-import TCard from '@/components/commons/Card/index.vue'
 import useStore from '@/store'
 import { ApplicationActionTypes } from '@/store/modules/application/actions'
 
@@ -77,8 +31,7 @@ export default defineComponent({
   components: {
     TAppBar,
     TIcon,
-    TFlyoutMenu,
-    TCard
+    AuthMenu
   },
   setup () {
     const store = useStore()
@@ -89,7 +42,7 @@ export default defineComponent({
     }
 
     return {
-      changeNavigatorStatus
+      changeNavigatorStatus,
     }
   }
 })

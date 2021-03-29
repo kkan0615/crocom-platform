@@ -34,7 +34,7 @@
 import { ref, defineComponent, computed } from 'vue'
 
 export default defineComponent({
-  name: 'TFlyoutMenu',
+  name: 'TDropdownMenu',
   props: {
     top: {
       type: Boolean,
