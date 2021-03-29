@@ -35,7 +35,7 @@ import TIcon from '@/components/commons/Icon/index.vue'
 export default defineComponent({
   name: 'TBadge',
   components: {
-    TIcon
+    TIcon,
   },
   props: {
     size: {

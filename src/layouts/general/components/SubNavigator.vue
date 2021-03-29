@@ -44,7 +44,7 @@
 </template>
 
 <script lang="ts">
-import { ref, defineComponent, computed } from 'vue'
+import { defineComponent, computed } from 'vue'
 import TSubNavigator from '@/components/commons/layouts/Navigator/components/SubNavigator.vue'
 import TeamMenu from '@/layouts/general/components/TeamMenu.vue'
 import AddTeam from '@/layouts/general/components/AddTeam.vue'
