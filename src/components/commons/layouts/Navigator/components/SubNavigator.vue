@@ -1,0 +1,33 @@
+<template>
+  <!-- Sidebar -->
+  <aside class="flex flex-col h-full items-center w-20 bg-white border-r dark:border-blue-800 dark:bg-darker">
+    <!-- Sidebar links -->
+    <nav
+      aria-label="Main"
+      class="flex flex-col py-4 space-y-2 h-full items-center"
+    >
+      <slot />
+    </nav>
+    <!-- Sidebar footer -->
+    <div class="mt-auto">
+      <slot
+        name="footer"
+      />
+    </div>
+  </aside>
+</template>
+
+<script lang="ts">
+import { ref, defineComponent } from 'vue'
+
+export default defineComponent({
+  name: 'TSubNavigator',
+  setup () {
+    const msg = ref('Home File')
+
+    return {
+      msg,
+    }
+  }
+})
+</script>

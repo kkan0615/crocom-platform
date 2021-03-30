@@ -6,12 +6,21 @@ import { InjectionKey } from 'vue'
 import { createLogger, createStore, Store, useStore as baseUseStore, } from 'vuex'
 import { UserState } from '@/store/modules/user/state'
 import { userModule, Store as UserStore } from '@/store/modules/user'
+import { ApplicationState } from '@/store/modules/application/state'
+import { applicationModule, Store as ApplicationStore } from '@/store/modules/application'
+import { TeamState } from '@/store/modules/team/state'
+import { teamModule, Store as TeamStore } from '@/store/modules/team'
 
 export interface RootState {
   user: UserState
+  application: ApplicationState
+  team: TeamState
 }
 
-export type RootStore = UserStore<Pick<RootState, 'user'>>
+export type RootStore =
+  UserStore<Pick<RootState, 'user'>> &
+  ApplicationStore<Pick<RootState, 'application'>> &
+  TeamStore<Pick<RootState, 'team'>>
 
 // define injection key
 export const key: InjectionKey<Store<RootState>> = Symbol()
@@ -20,6 +29,8 @@ export const store = createStore<RootState>({
   plugins,
   modules: {
     user: userModule,
+    application: applicationModule,
+    team: teamModule,
   },
 })
 export default function useStore (): RootStore {
