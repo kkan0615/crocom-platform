@@ -11,7 +11,7 @@
 <script lang="ts">
 import { defineComponent, computed } from 'vue'
 
-export default defineComponent({
+export const TIcon = defineComponent({
   name: 'TIcon',
   props: {
     color: {
@@ -37,4 +37,6 @@ export default defineComponent({
     }
   }
 })
+
+export default TIcon
 </script>

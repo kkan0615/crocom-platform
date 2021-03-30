@@ -9,7 +9,7 @@
     >
       reorder
     </t-icon>
-    <!-- end part -->
+    <!--    end part-->
     <div
       class="ml-auto mr-2"
     >

@@ -2,9 +2,11 @@ import { ActionContext, ActionTree } from 'vuex'
 import { UserMutations, UserMutationTypes } from './mutations'
 import { UserState } from './state'
 import { RootState } from '@/store'
+import { TeamActionTypes } from '@/store/modules/team/actions'
 
 export enum UserActionTypes {
   setUser = 'USER_SET_USER',
+  UPDATE_USER = 'USER_UPDATE_USER',
 }
 
 export type AugmentedActionContext = {
@@ -19,11 +21,26 @@ export interface UserActions {
     { commit }: AugmentedActionContext,
     payload: UserState
   ): void
+  [UserActionTypes.UPDATE_USER](
+    { commit }: AugmentedActionContext,
+  ): void
 }
 
 export const userActions: ActionTree<UserState, RootState> & UserActions = {
   [UserActionTypes.setUser] ({ commit }, payload) {
     console.log('I am in action', payload)
     commit(UserMutationTypes.SET_USER, payload)
+  },
+  async [UserActionTypes.UPDATE_USER] ({ commit, dispatch }) {
+    commit(UserMutationTypes.SET_USER, {
+      id: 1,
+      name: 'Test Admin',
+      img: 'https://randomuser.me/api/portraits/men/62.jpg',
+      color: '#1231f',
+      nickname: 'Penguin King',
+      Friends: [],
+    })
+
+    await dispatch(TeamActionTypes.LOAD_TEAMS, {}, { root: true })
   },
 }
