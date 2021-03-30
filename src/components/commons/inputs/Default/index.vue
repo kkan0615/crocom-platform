@@ -37,7 +37,7 @@
 
 <script lang="ts">
 import { defineComponent, computed, ref, onMounted } from 'vue'
-import inputProps, { InputRulesType } from '@/components/commons/Inputs/Default/types'
+import inputProps, { InputRulesType } from './types'
 
 export default defineComponent({
   name: 'TDefaultInput',
