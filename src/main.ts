@@ -5,6 +5,7 @@ import App from './App.vue'
 import './registerServiceWorker'
 /* Router */
 import router from './router'
+import '@/router/beforeEach'
 import DialogPlugin from '@/plugins/dialog'
 import ThemePlugin from '@/plugins/theme'
 

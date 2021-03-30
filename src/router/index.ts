@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import GeneralLayout from '@/layouts/general/index.vue'
 import authRoutes from '@/router/modules/auth'
+import teamRoutes from '@/router/modules/team'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -26,7 +27,8 @@ const routes: Array<RouteRecordRaw> = [
         meta: {
           hidden: false
         }
-      }
+      },
+      ...teamRoutes
     ]
   },
   ...authRoutes

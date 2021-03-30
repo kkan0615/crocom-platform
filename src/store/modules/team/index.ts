@@ -8,7 +8,7 @@ import { RootState } from '@/store'
 import { teamState, TeamState } from '@/store/modules/team/state'
 import { teamGetters, TeamGetters } from '@/store/modules/team/getters'
 import { teamMutations, TeamMutations } from '@/store/modules/team/mutations'
-import { TeamActions, tamActions } from '@/store/modules/team/actions'
+import { TeamActions, teamActions } from '@/store/modules/team/actions'
 
 export type Store<S = TeamState> = Omit<
 VuexStore<S>,
@@ -37,5 +37,5 @@ export const teamModule: Module<TeamState, RootState> = {
   state: teamState,
   getters: teamGetters,
   mutations: teamMutations,
-  actions: tamActions,
+  actions: teamActions,
 }

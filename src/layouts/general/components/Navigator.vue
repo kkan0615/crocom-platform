@@ -19,7 +19,10 @@
         </t-icon>
       </div>
     </div>
-    <t-menu-group>
+    <!--  text  -->
+    <t-menu-group
+      open
+    >
       <template
         #icon
       >
@@ -41,10 +44,13 @@
       <template
         #label
       >
-        Test label
+        Text Groups
       </template>
-      <t-sub-menu>
-        Test
+      <t-sub-menu
+        v-for="textTeamGroup in textTeamGroups"
+        :key="textTeamGroup.id"
+      >
+        {{ textTeamGroup.title }}
       </t-sub-menu>
     </t-menu-group>
     <template
@@ -68,6 +74,7 @@ import TIcon from '@/components/commons/Icon/index.vue'
 import TSubMenu from '@/components/commons/layouts/Navigator/components/SubMenu.vue'
 import useStore from '@/store'
 import { ApplicationActionTypes } from '@/store/modules/application/actions'
+import { TeamMenuGroupTypeEnum } from '@/types/model/team/menuGroup'
 
 export default defineComponent({
   name: 'Navigator',
@@ -80,6 +87,10 @@ export default defineComponent({
   },
   setup () {
     const store = useStore()
+    const teamGroups = computed(() => store.state.team.currentTeamGroups)
+    const textTeamGroups = computed(() => store.state.team.currentTeamGroups.filter(teamGroup => teamGroup.type === TeamMenuGroupTypeEnum.text))
+    const audioTeamGroups = computed(() => store.state.team.currentTeamGroups.filter(teamGroup => teamGroup.type === TeamMenuGroupTypeEnum.audio))
+    const videoTeamGroups = computed(() => store.state.team.currentTeamGroups.filter(teamGroup => teamGroup.type === TeamMenuGroupTypeEnum.video))
     const application = computed(() => store.state.application)
     const navigatorVisible = computed(() => application.value.navigator)
 
@@ -90,7 +101,10 @@ export default defineComponent({
 
     return {
       navigatorVisible,
-      changeNavigatorStatus
+      textTeamGroups,
+      audioTeamGroups,
+      videoTeamGroups,
+      changeNavigatorStatus,
     }
   }
 })

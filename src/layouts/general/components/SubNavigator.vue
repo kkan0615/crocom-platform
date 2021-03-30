@@ -4,20 +4,26 @@
     class="pa-2"
   >
     <!-- @TODO, Change to loop and get from store -->
-    <team-menu
-      :team="{
-        id: 2,
-        img: 'https://picsum.photos/200/300',
-        title: 'start road'
-      }"
-    />
-    <team-menu
-      :team="{
-        id: 3,
+    <!--    <team-menu-->
+    <!--      :team="{-->
+    <!--        id: 2,-->
+    <!--        img: 'https://picsum.photos/200/300',-->
+    <!--        title: 'start road'-->
+    <!--      }"-->
+    <!--    />-->
+    <!--    <team-menu-->
+    <!--      :team="{-->
+    <!--        id: 3,-->
 
-        img: 'https://picsum.photos/200/300',
-        title: 'start road'
-      }"
+    <!--        img: 'https://picsum.photos/200/300',-->
+    <!--        title: 'start road'-->
+    <!--      }"-->
+    <!--    />-->
+    <team-menu
+      v-for="team in teams"
+      :key="team.id"
+      :team="team"
+      @click="onClickTeam(team)"
     />
     <add-team />
     <template
@@ -52,6 +58,8 @@ import TIcon from '@/components/commons/Icon/index.vue'
 import TDropdownMenu from '@/components/commons/menu/Dropdown/index.vue'
 import TCard from '@/components/commons/Card/index.vue'
 import useStore from '@/store'
+import { Team } from '@/types/model/team/team'
+import { useRouter } from 'vue-router'
 
 export default defineComponent({
   name: 'SubNavigatorGeneral',
@@ -65,11 +73,25 @@ export default defineComponent({
   },
   setup () {
     const store = useStore()
+    const router = useRouter()
+    const teams = computed(() => store.state.team.teams)
     const application = computed(() => store.state.application)
     const subNavigatorVisible = computed(() => application.value.subNavigator)
 
+    /**
+     * Redirect to team
+     * @param team - clicked team
+     */
+    const onClickTeam = async (team: Team) => {
+      console.log('onClickTeam', team)
+
+      await router.push({ name: 'TeamMain', params: { id: team.id } })
+    }
+
     return {
       subNavigatorVisible,
+      teams,
+      onClickTeam,
     }
   }
 })

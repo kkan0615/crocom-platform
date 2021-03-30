@@ -1,8 +1,9 @@
 import { Team } from '@/types/model/team/team'
-import { TeamMenuGroup } from '@/types/model/team/menuGroup'
+import { TeamMenuGroup, TeamMenuGroupTypeEnum } from '@/types/model/team/menuGroup'
 
 export interface TeamState {
   teams: Array<Team>
+  currentTeam: Team
   currentTeamGroups: Array<TeamMenuGroup>
 }
 
@@ -11,5 +12,12 @@ export interface TeamState {
  */
 export const teamState: TeamState = {
   teams: [],
-  currentTeamGroups: []
+  currentTeam: {} as Team,
+  currentTeamGroups: [{
+    teamId: 1,
+    id: 1,
+    type: TeamMenuGroupTypeEnum.text,
+    title: 'Text test!',
+    description: 'test'
+  }],
 }
