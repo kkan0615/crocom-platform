@@ -13,7 +13,9 @@
         <navigator />
         <main class="p-4 space-y-4">
           {{ msg }}
-          <router-view />
+          <router-view
+            :key="$route.path"
+          />
         </main>
       </div>
     </div>
