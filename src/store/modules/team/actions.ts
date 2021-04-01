@@ -31,7 +31,7 @@ export interface TeamActions {
   ): void
   [TeamActionTypes.SET_CURRENT_TEAM_MENU_GROUP](
     { commit }: AugmentedActionContext,
-    payload: TeamMenuGroup
+    payload: Array<TeamMenuGroup>
   ): void
   [TeamActionTypes.LOAD_TEAMS](
     { commit }: AugmentedActionContext,
@@ -45,8 +45,8 @@ export const teamActions: ActionTree<TeamState, RootState> & TeamActions = {
   [TeamActionTypes.SET_CURRENT_TEAM] ({ commit }) {
     commit(TeamMutationTypes.SET_CURRENT_TEAM)
   },
-  [TeamActionTypes.SET_CURRENT_TEAM_MENU_GROUP] ({ commit }) {
-    commit(TeamMutationTypes.SET_CURRENT_TEAM_MENU_GROUP)
+  [TeamActionTypes.SET_CURRENT_TEAM_MENU_GROUP] ({ commit }, payload) {
+    commit(TeamMutationTypes.SET_CURRENT_TEAM_MENU_GROUP, payload)
   },
   async [TeamActionTypes.LOAD_TEAMS] ({ commit }) {
     const responseData = await getTeams()

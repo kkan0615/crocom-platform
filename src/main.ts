@@ -9,6 +9,11 @@ import '@/router/beforeEach'
 import DialogPlugin from '@/plugins/dialog'
 import ThemePlugin from '@/plugins/theme'
 
+
+/* Init dummay data */
+import { initDummyData } from '@/dummy'
+initDummyData()
+
 /* Store */
 import { store, key } from './store'
 
