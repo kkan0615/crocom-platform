@@ -17,3 +17,5 @@ export enum TeamMenuGroupTypeEnum {
   'audio' = 'audio',
   'video' = 'video',
 }
+
+export const keyOfTeamMenuGroupTypeEnum = Object.keys(TeamMenuGroupTypeEnum)
