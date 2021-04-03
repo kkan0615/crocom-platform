@@ -5,12 +5,16 @@ import { RootState } from '@/store'
 import { Channel } from '@/types/model/channel/channel'
 import { loadChannels } from '@/dummy/channel/channel'
 import { ChannelRoom } from '@/types/model/channel/room'
+import { loadChannelRoomGroupByChannelId } from '@/dummy/channel/roomGroup'
+import { ChannelRoomGroupInfo } from '@/types/model/channel/roomGroup'
+import { loadChannelRoomsByChannelRoomGroupId } from '@/dummy/channel/room'
 
 export enum ChannelActionTypes {
   SET_CHANNELS = 'CHANNEL_SET_CHANNELS',
   SET_CURRENT_CHANNEL = 'CHANNEL_SET_CURRENT_CHANNEL',
   SET_CURRENT_ROOM = 'CHANNEL_SET_CURRENT_ROOM',
   LOAD_CHANNELS = 'CHANNEL_LOAD_CHANNELS',
+  INIT_CHANNEL_INFO = 'CHANNEL_INIT_CHANNEL_INFO',
 }
 
 export type AugmentedActionContext = {
@@ -36,6 +40,9 @@ export interface ChannelActions {
   [ChannelActionTypes.LOAD_CHANNELS](
     { commit }: AugmentedActionContext,
   ): Promise<Array<Channel>>
+  [ChannelActionTypes.INIT_CHANNEL_INFO](
+    { commit }: AugmentedActionContext,
+  ): void
 }
 
 export const channelActions: ActionTree<ChannelState, RootState> & ChannelActions = {
@@ -53,5 +60,15 @@ export const channelActions: ActionTree<ChannelState, RootState> & ChannelAction
     commit(ChannelMutationTypes.SET_CHANNELS, responseData)
 
     return responseData
+  },
+  async [ChannelActionTypes.INIT_CHANNEL_INFO] ({ commit }) {
+    const responseChannelRoomGroup = await loadChannelRoomGroupByChannelId(0)
+    const groupAndRooms = await Promise.all(responseChannelRoomGroup.map(async (group) => {
+      return {
+        ...group,
+        rooms: await loadChannelRoomsByChannelRoomGroupId(group.id)
+      } as ChannelRoomGroupInfo
+    }))
+    commit(ChannelMutationTypes.SET_GROUPS_AND_ROOMS, groupAndRooms)
   },
 }

@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import GeneralLayout from '@/layouts/general/index.vue'
 import authRoutes from '@/router/modules/auth'
-import teamRoutes from '@/router/modules/team'
+import channelRoutes from '@/router/modules/channel'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -28,7 +28,7 @@ const routes: Array<RouteRecordRaw> = [
           hidden: false
         }
       },
-      ...teamRoutes
+      ...channelRoutes
     ]
   },
   ...authRoutes

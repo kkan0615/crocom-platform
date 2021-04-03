@@ -1,25 +1,28 @@
 <template>
   <div>
-    {{ msg }}
+    hello
+    {{ channelGroupsAndRooms }}
   </div>
 </template>
 
 <script lang="ts">
 import { ref, defineComponent, computed, onMounted } from 'vue'
-import { useStore } from 'vuex'
+import { ChannelActionTypes } from '@/store/modules/channel/actions'
+import useStore from '@/store'
 
 export default defineComponent({
   name: 'ChannelHome',
   setup () {
     const store = useStore()
-    // onMounted(() => {
-    //   const channel = getTeam
-    // })
+    const channelGroupsAndRooms = computed(() => store.state.channel.groupsAndRooms)
 
-    const msg = ref('Home File')
+    onMounted(() => {
+      console.log('hi')
+      store.dispatch(ChannelActionTypes.INIT_CHANNEL_INFO)
+    })
 
     return {
-      msg,
+      channelGroupsAndRooms,
     }
   }
 })

@@ -4,7 +4,7 @@ import { ChannelRoom } from '@/types/model/channel/room'
 
 export const channelRooms: Array<ChannelRoom> = []
 
-export const getChannelRoomsByTeamMenuGroupId = async (roomGroupId: number) => {
+export const loadChannelRoomsByChannelRoomGroupId = async (roomGroupId: number) => {
   return channelRooms.filter((room) => room.roomGroupId === roomGroupId)
 }
 

@@ -1,10 +1,15 @@
 import { SequelizeAttributes } from '@/types/sequelize'
+import { ChannelRoom } from '@/types/model/channel/room'
 
 export interface ChannelRoomGroup extends SequelizeAttributes {
   channelId: number
   title: string
   type: ChannelRoomGroupTypeEnum
   description: string
+}
+
+export interface ChannelRoomGroupInfo extends ChannelRoomGroup {
+  rooms: Array<ChannelRoom>
 }
 
 /**
