@@ -3,29 +3,13 @@
     v-if="subNavigatorVisible"
     class="pa-2"
   >
-    <!-- @TODO, Change to loop and get from store -->
-    <!--    <team-menu-->
-    <!--      :team="{-->
-    <!--        id: 2,-->
-    <!--        img: 'https://picsum.photos/200/300',-->
-    <!--        title: 'start road'-->
-    <!--      }"-->
-    <!--    />-->
-    <!--    <team-menu-->
-    <!--      :team="{-->
-    <!--        id: 3,-->
-
-    <!--        img: 'https://picsum.photos/200/300',-->
-    <!--        title: 'start road'-->
-    <!--      }"-->
-    <!--    />-->
-    <team-menu
-      v-for="team in teams"
-      :key="team.id"
-      :team="team"
-      @click="onClickTeam(team)"
+    <channel-menu
+      v-for="channel in channels"
+      :key="channel.id"
+      :channel="channel"
+      @click="onClickChennlMenu(channel)"
     />
-    <add-team />
+    <add-channel />
     <template
       #footer
     >
@@ -52,13 +36,13 @@
 <script lang="ts">
 import { defineComponent, computed } from 'vue'
 import TSubNavigator from '@/components/commons/layouts/Navigator/components/SubNavigator.vue'
-import TeamMenu from '@/layouts/general/components/TeamMenu.vue'
-import AddTeam from '@/layouts/general/components/AddTeam.vue'
+import ChannelMenu from '@/layouts/general/components/ChannelMenu.vue'
+import AddChannel from '@/layouts/general/components/AddChannel.vue'
 import TIcon from '@/components/commons/Icon/index.vue'
 import TDropdownMenu from '@/components/commons/menu/Dropdown/index.vue'
 import TCard from '@/components/commons/Card/index.vue'
 import useStore from '@/store'
-import { Team } from '@/types/model/team/team'
+import { Channel } from '@/types/model/channel/channel'
 import { useRouter } from 'vue-router'
 
 export default defineComponent({
@@ -68,30 +52,28 @@ export default defineComponent({
     TIcon,
     TDropdownMenu,
     TCard,
-    TeamMenu,
-    AddTeam
+    ChannelMenu,
+    AddChannel
   },
   setup () {
     const store = useStore()
     const router = useRouter()
-    const teams = computed(() => store.state.team.teams)
+    const channels = computed(() => store.state.channel.channels)
     const application = computed(() => store.state.application)
     const subNavigatorVisible = computed(() => application.value.subNavigator)
 
     /**
-     * Redirect to team
-     * @param team - clicked team
+     * Home to channel
+     * @param channel
      */
-    const onClickTeam = async (team: Team) => {
-      console.log('onClickTeam', team)
-
-      await router.push({ name: 'TeamMain', params: { id: team.id } })
+    const onClickChennlMenu = async (channel: Channel) => {
+      await router.push({ name: 'ChannelMainWithOutRoomId', params: { id: channel.id } })
     }
 
     return {
       subNavigatorVisible,
-      teams,
-      onClickTeam,
+      channels,
+      onClickChennlMenu,
     }
   }
 })

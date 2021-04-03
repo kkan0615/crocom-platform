@@ -19,108 +19,108 @@
         </t-icon>
       </div>
     </div>
-    <!--  text  -->
-    <t-menu-group
-      open
-    >
-      <template
-        #icon
-      >
-        <svg
-          class="w-5 h-5"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-          />
-        </svg>
-      </template>
-      <template
-        #label
-      >
-        Text Groups
-      </template>
-      <t-sub-menu
-        v-for="textTeamGroup in textTeamGroups"
-        :key="textTeamGroup.id"
-      >
-        {{ textTeamGroup.title }}
-      </t-sub-menu>
-    </t-menu-group>
-    <!--  Audio  -->
-    <t-menu-group
-      open
-    >
-      <template
-        #icon
-      >
-        <svg
-          class="w-5 h-5"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-          />
-        </svg>
-      </template>
-      <template
-        #label
-      >
-        Audio Group
-      </template>
-      <t-sub-menu
-        v-for="audioTeamGroup in audioTeamGroups"
-        :key="audioTeamGroup.id"
-      >
-        {{ audioTeamGroup.title }}
-      </t-sub-menu>
-    </t-menu-group>
-    <!--  Video  -->
-    <t-menu-group
-      open
-    >
-      <template
-        #icon
-      >
-        <svg
-          class="w-5 h-5"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-          />
-        </svg>
-      </template>
-      <template
-        #label
-      >
-        Video Groups
-      </template>
-      <t-sub-menu
-        v-for="videoTeamGroup in videoTeamGroups"
-        :key="videoTeamGroup.id"
-      >
-        {{ videoTeamGroup.title }}
-      </t-sub-menu>
-    </t-menu-group>
+    <!--    &lt;!&ndash;  text  &ndash;&gt;-->
+    <!--    <t-menu-group-->
+    <!--      open-->
+    <!--    >-->
+    <!--      <template-->
+    <!--        #icon-->
+    <!--      >-->
+    <!--        <svg-->
+    <!--          class="w-5 h-5"-->
+    <!--          xmlns="http://www.w3.org/2000/svg"-->
+    <!--          fill="none"-->
+    <!--          viewBox="0 0 24 24"-->
+    <!--          stroke="currentColor"-->
+    <!--        >-->
+    <!--          <path-->
+    <!--            stroke-linecap="round"-->
+    <!--            stroke-linejoin="round"-->
+    <!--            stroke-width="2"-->
+    <!--            d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"-->
+    <!--          />-->
+    <!--        </svg>-->
+    <!--      </template>-->
+    <!--      <template-->
+    <!--        #label-->
+    <!--      >-->
+    <!--        Text Groups-->
+    <!--      </template>-->
+    <!--      <t-sub-menu-->
+    <!--        v-for="textTeamGroup in textTeamGroups"-->
+    <!--        :key="textTeamGroup.id"-->
+    <!--      >-->
+    <!--        {{ textTeamGroup.title }}-->
+    <!--      </t-sub-menu>-->
+    <!--    </t-menu-group>-->
+    <!--    &lt;!&ndash;  Audio  &ndash;&gt;-->
+    <!--    <t-menu-group-->
+    <!--      open-->
+    <!--    >-->
+    <!--      <template-->
+    <!--        #icon-->
+    <!--      >-->
+    <!--        <svg-->
+    <!--          class="w-5 h-5"-->
+    <!--          xmlns="http://www.w3.org/2000/svg"-->
+    <!--          fill="none"-->
+    <!--          viewBox="0 0 24 24"-->
+    <!--          stroke="currentColor"-->
+    <!--        >-->
+    <!--          <path-->
+    <!--            stroke-linecap="round"-->
+    <!--            stroke-linejoin="round"-->
+    <!--            stroke-width="2"-->
+    <!--            d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"-->
+    <!--          />-->
+    <!--        </svg>-->
+    <!--      </template>-->
+    <!--      <template-->
+    <!--        #label-->
+    <!--      >-->
+    <!--        Audio Group-->
+    <!--      </template>-->
+    <!--      <t-sub-menu-->
+    <!--        v-for="audioTeamGroup in audioTeamGroups"-->
+    <!--        :key="audioTeamGroup.id"-->
+    <!--      >-->
+    <!--        {{ audioTeamGroup.title }}-->
+    <!--      </t-sub-menu>-->
+    <!--    </t-menu-group>-->
+    <!--    &lt;!&ndash;  Video  &ndash;&gt;-->
+    <!--    <t-menu-group-->
+    <!--      open-->
+    <!--    >-->
+    <!--      <template-->
+    <!--        #icon-->
+    <!--      >-->
+    <!--        <svg-->
+    <!--          class="w-5 h-5"-->
+    <!--          xmlns="http://www.w3.org/2000/svg"-->
+    <!--          fill="none"-->
+    <!--          viewBox="0 0 24 24"-->
+    <!--          stroke="currentColor"-->
+    <!--        >-->
+    <!--          <path-->
+    <!--            stroke-linecap="round"-->
+    <!--            stroke-linejoin="round"-->
+    <!--            stroke-width="2"-->
+    <!--            d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"-->
+    <!--          />-->
+    <!--        </svg>-->
+    <!--      </template>-->
+    <!--      <template-->
+    <!--        #label-->
+    <!--      >-->
+    <!--        Video Groups-->
+    <!--      </template>-->
+    <!--      <t-sub-menu-->
+    <!--        v-for="videoTeamGroup in videoTeamGroups"-->
+    <!--        :key="videoTeamGroup.id"-->
+    <!--      >-->
+    <!--        {{ videoTeamGroup.title }}-->
+    <!--      </t-sub-menu>-->
+    <!--    </t-menu-group>-->
     <template
       #footer
     >
@@ -137,28 +137,23 @@
 import { computed, defineComponent } from 'vue'
 import TNavigator from '@/components/commons/layouts/Navigator/index.vue'
 import TButton from '@/components/commons/Button/index.vue'
-import TMenuGroup from '@/components/commons/layouts/Navigator/components/MenuGroup.vue'
+// import TMenuGroup from '@/components/commons/layouts/Navigator/components/MenuGroup.vue'
 import TIcon from '@/components/commons/Icon/index.vue'
-import TSubMenu from '@/components/commons/layouts/Navigator/components/SubMenu.vue'
+// import TSubMenu from '@/components/commons/layouts/Navigator/components/SubMenu.vue'
 import useStore from '@/store'
 import { ApplicationActionTypes } from '@/store/modules/application/actions'
-import { TeamMenuGroupTypeEnum } from '@/types/model/team/menuGroup'
 
 export default defineComponent({
   name: 'Navigator',
   components: {
     TNavigator,
     TButton,
-    TMenuGroup,
+    // TMenuGroup,
     TIcon,
-    TSubMenu,
+    // TSubMenu,
   },
   setup () {
     const store = useStore()
-    const teamGroups = computed(() => store.state.team.currentTeamGroups)
-    const textTeamGroups = computed(() => teamGroups.value.filter(teamGroup => teamGroup.type === TeamMenuGroupTypeEnum.text))
-    const audioTeamGroups = computed(() => teamGroups.value.filter(teamGroup => teamGroup.type === TeamMenuGroupTypeEnum.audio))
-    const videoTeamGroups = computed(() => teamGroups.value.filter(teamGroup => teamGroup.type === TeamMenuGroupTypeEnum.video))
     const application = computed(() => store.state.application)
     const navigatorVisible = computed(() => application.value.navigator)
 
@@ -168,9 +163,6 @@ export default defineComponent({
 
     return {
       navigatorVisible,
-      textTeamGroups,
-      audioTeamGroups,
-      videoTeamGroups,
       changeNavigatorStatus,
     }
   }

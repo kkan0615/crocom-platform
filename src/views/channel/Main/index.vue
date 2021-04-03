@@ -8,11 +8,11 @@
 import { ref, defineComponent, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import useStore from '@/store'
-import { getTeamMenuGroupsByTeamId } from '@/dummy/team/teamGroup'
-import { TeamActionTypes } from '@/store/modules/team/actions'
+import { loadChannelRoomGroupByChannelId } from '@/dummy/channel/roomGroup'
+import { ChannelActionTypes } from '@/store/modules/channel/actions'
 
 export default defineComponent({
-  name: 'TeamMain',
+  name: 'ChannelMain',
   setup () {
     const store = useStore()
 
@@ -21,14 +21,12 @@ export default defineComponent({
 
     onMounted(async () => {
       if (Number(id)) {
-        const responseData = (await getTeamMenuGroupsByTeamId(Number(id)))
-        await store.dispatch(TeamActionTypes.SET_CURRENT_TEAM_MENU_GROUP, responseData)
-
-        console.log('hi')
+        const responseData = (await loadChannelRoomGroupByChannelId(Number(id)))
+        await store.dispatch(ChannelActionTypes.SET_CURRENT_ROOM, responseData)
       }
     })
 
-    const msg = ref('Team Main')
+    const msg = ref('Channel Main')
 
     return {
       msg,

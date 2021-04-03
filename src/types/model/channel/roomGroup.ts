@@ -1,9 +1,9 @@
 import { SequelizeAttributes } from '@/types/sequelize'
 
-export interface TeamMenuGroup extends SequelizeAttributes {
-  teamId: number
+export interface ChannelRoomGroup extends SequelizeAttributes {
+  channelId: number
   title: string
-  type: TeamMenuGroupTypeEnum
+  type: ChannelRoomGroupTypeEnum
   description: string
 }
 
@@ -12,10 +12,10 @@ export interface TeamMenuGroup extends SequelizeAttributes {
  * audio - chat + only mic
  * video - chat + mic + video
  */
-export enum TeamMenuGroupTypeEnum {
+export enum ChannelRoomGroupTypeEnum {
   'text' = 'text',
   'audio' = 'audio',
   'video' = 'video',
 }
 
-export const keyOfTeamMenuGroupTypeEnum = Object.keys(TeamMenuGroupTypeEnum)
+export const keyOfChannelRoomGroupTypeEnum = Object.keys(ChannelRoomGroupTypeEnum)
