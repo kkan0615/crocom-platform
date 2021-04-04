@@ -1,6 +1,6 @@
 import { SequelizeAttributes } from '@/types/sequelize'
 
-export interface Team extends SequelizeAttributes {
+export interface Channel extends SequelizeAttributes {
   img: string
   title: string
 }

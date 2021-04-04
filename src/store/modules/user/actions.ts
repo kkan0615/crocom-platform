@@ -2,7 +2,7 @@ import { ActionContext, ActionTree } from 'vuex'
 import { UserMutations, UserMutationTypes } from './mutations'
 import { UserState } from './state'
 import { RootState } from '@/store'
-import { TeamActionTypes } from '@/store/modules/team/actions'
+import { ChannelActionTypes } from '@/store/modules/channel/actions'
 
 export enum UserActionTypes {
   setUser = 'USER_SET_USER',
@@ -41,6 +41,6 @@ export const userActions: ActionTree<UserState, RootState> & UserActions = {
       Friends: [],
     })
 
-    await dispatch(TeamActionTypes.LOAD_TEAMS, {}, { root: true })
+    await dispatch(ChannelActionTypes.LOAD_CHANNELS, {}, { root: true })
   },
 }

@@ -1,7 +1,7 @@
 import { SequelizeAttributes } from '@/types/sequelize'
 
-export interface TeamPermission extends SequelizeAttributes {
-  teamId: number
+export interface ChannelPermission extends SequelizeAttributes {
+  channelId: number
   userId: number
   title: string
 }
