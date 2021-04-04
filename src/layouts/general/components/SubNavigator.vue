@@ -1,13 +1,15 @@
 <template>
   <t-sub-navigator
     v-if="subNavigatorVisible"
-    class="pa-2"
+    class="pa-4"
   >
+    <channel-me />
+    <t-divider />
     <channel-menu
       v-for="channel in channels"
       :key="channel.id"
       :channel="channel"
-      @click="onClickChennlMenu(channel)"
+      @click="onClickChannelMenu(channel)"
     />
     <add-channel />
     <template
@@ -37,6 +39,7 @@
 import { defineComponent, computed } from 'vue'
 import TSubNavigator from '@/components/commons/layouts/Navigator/components/SubNavigator.vue'
 import ChannelMenu from '@/layouts/general/components/ChannelMenu.vue'
+import ChannelMe from '@/layouts/general/components/ChannelMe.vue'
 import AddChannel from '@/layouts/general/components/AddChannel.vue'
 import TIcon from '@/components/commons/Icon/index.vue'
 import TDropdownMenu from '@/components/commons/menu/Dropdown/index.vue'
@@ -44,6 +47,7 @@ import TCard from '@/components/commons/Card/index.vue'
 import useStore from '@/store'
 import { Channel } from '@/types/model/channel/channel'
 import { useRouter } from 'vue-router'
+import TDivider from '@/components/commons/Divider/inedx.vue'
 
 export default defineComponent({
   name: 'SubNavigatorGeneral',
@@ -53,7 +57,9 @@ export default defineComponent({
     TDropdownMenu,
     TCard,
     ChannelMenu,
-    AddChannel
+    AddChannel,
+    ChannelMe,
+    TDivider
   },
   setup () {
     const store = useStore()
@@ -66,14 +72,14 @@ export default defineComponent({
      * Home to channel
      * @param channel
      */
-    const onClickChennlMenu = async (channel: Channel) => {
-      await router.push({ name: 'ChannelMainWithOutRoomId', params: { id: channel.id } })
+    const onClickChannelMenu = async (channel: Channel) => {
+      await router.push({ name: 'ChannelMainWithOutRoomId', params: { channelId: channel.id.toString() } })
     }
 
     return {
       subNavigatorVisible,
       channels,
-      onClickChennlMenu,
+      onClickChannelMenu,
     }
   }
 })

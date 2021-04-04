@@ -2,7 +2,7 @@ import { RouteRecordRaw } from 'vue-router'
 
 const channelRoutes: Array<RouteRecordRaw> = [
   {
-    path: 'channel/id/:id/home',
+    path: 'channel/id/:channelId/home',
     name: 'ChannelMainWithOutRoomId',
     component: () => import('@/views/channel/Home/index.vue'),
     meta: {

@@ -21,3 +21,7 @@ export const channels: Array<Channel> = [
 export const loadChannels = async () => {
   return channels
 }
+
+export const loadChannelById = async (channelId: number) => {
+  return channels.find(channel => channel.id === channelId)
+}
