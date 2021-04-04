@@ -15,6 +15,7 @@ import { ref, defineComponent, onMounted, computed, inject } from 'vue'
 // import { useStore } from 'vuex'
 import useStore, { key } from '@/store'
 import { useRouter } from 'vue-router'
+import { ChannelActionTypes } from '@/store/modules/channel/actions'
 // import { UserActionTypes } from '@/store/modules/user/actions'
 
 export default defineComponent({
@@ -26,6 +27,7 @@ export default defineComponent({
     const userInfo = computed(() => store.state.user)
 
     onMounted(async () => {
+      await store.dispatch(ChannelActionTypes.RESET_CHANNEL_INFO)
       // console.log(store)
       // console.log('state', store.state)
       // console.log('state.user', store.state.user)

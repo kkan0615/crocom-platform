@@ -1,6 +1,7 @@
 <template>
   <div>
-    hello
+    {{ currentChannel }}
+    <br>
     {{ channelGroupsAndRooms }}
   </div>
 </template>
@@ -16,14 +17,19 @@ export default defineComponent({
   setup () {
     const store = useStore()
     const channelGroupsAndRooms = computed(() => store.state.channel.groupsAndRooms)
+    const currentChannel = computed(() => store.state.channel.currentChannel)
     const route = useRoute()
     const { channelId } = route.params
 
-    onMounted(() => {
-      store.dispatch(ChannelActionTypes.INIT_CHANNEL_INFO, Number(channelId))
+    onMounted(async () => {
+      if (store.state.channel.currentChannel.id !== Number(channelId))
+        await store.dispatch(ChannelActionTypes.SET_CURRENT_ROOM, Number(channelId))
+
+      await store.dispatch(ChannelActionTypes.INIT_CHANNEL_INFO, Number(channelId))
     })
 
     return {
+      currentChannel,
       channelGroupsAndRooms,
     }
   }

@@ -33,7 +33,7 @@ export interface ChannelActions {
   ): void
   [ChannelActionTypes.SET_CURRENT_CHANNEL](
     { commit }: AugmentedActionContext,
-    payload: Channel
+    payload: number
   ): void
   [ChannelActionTypes.SET_CURRENT_ROOM](
     { commit }: AugmentedActionContext,
@@ -62,8 +62,10 @@ export const channelActions: ActionTree<ChannelState, RootState> & ChannelAction
   [ChannelActionTypes.SET_CURRENT_CHANNEL] ({ commit }, payload) {
     commit(ChannelMutationTypes.SET_CURRENT_CHANNEL, payload)
   },
-  [ChannelActionTypes.SET_CURRENT_ROOM] ({ commit }, payload) {
-    commit(ChannelMutationTypes.SET_CURRENT_CHANNEL_ROOM, payload)
+  async [ChannelActionTypes.SET_CURRENT_ROOM] ({ commit }, payload) {
+    const responseData = await loadChannelById(payload)
+    if (responseData)
+      commit(ChannelMutationTypes.SET_CURRENT_CHANNEL, responseData)
   },
   async [ChannelActionTypes.LOAD_CHANNEL_BY_ID] ({ commit }, payload) {
     const responseData = await loadChannelById(payload)
