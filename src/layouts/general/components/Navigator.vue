@@ -1,6 +1,7 @@
 <template>
   <t-navigator
     v-if="navigatorVisible"
+    class="flex flex-col"
   >
     <div
       class="flex"
@@ -19,108 +20,45 @@
         </t-icon>
       </div>
     </div>
-    <!--  text  -->
-    <t-menu-group
-      open
+    <div
+      class="flex-grow overflow-y-auto"
     >
-      <template
-        #icon
+      <t-menu-group
+        v-for="group in groupsAndRooms"
+        :key="group.id"
+        open
       >
-        <svg
-          class="w-5 h-5"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
+        <template
+          #icon
         >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-          />
-        </svg>
-      </template>
-      <template
-        #label
-      >
-        Text Groups
-      </template>
-      <t-sub-menu
-        v-for="textTeamGroup in textTeamGroups"
-        :key="textTeamGroup.id"
-      >
-        {{ textTeamGroup.title }}
-      </t-sub-menu>
-    </t-menu-group>
-    <!--  Audio  -->
-    <t-menu-group
-      open
-    >
-      <template
-        #icon
-      >
-        <svg
-          class="w-5 h-5"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
+          <svg
+            class="w-5 h-5"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+            />
+          </svg>
+        </template>
+        <template
+          #label
         >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-          />
-        </svg>
-      </template>
-      <template
-        #label
-      >
-        Audio Group
-      </template>
-      <t-sub-menu
-        v-for="audioTeamGroup in audioTeamGroups"
-        :key="audioTeamGroup.id"
-      >
-        {{ audioTeamGroup.title }}
-      </t-sub-menu>
-    </t-menu-group>
-    <!--  Video  -->
-    <t-menu-group
-      open
-    >
-      <template
-        #icon
-      >
-        <svg
-          class="w-5 h-5"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
+          {{ group.title }}
+        </template>
+        <t-sub-menu
+          v-for="room in group.rooms"
+          :key="room.id"
         >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-          />
-        </svg>
-      </template>
-      <template
-        #label
-      >
-        Video Groups
-      </template>
-      <t-sub-menu
-        v-for="videoTeamGroup in videoTeamGroups"
-        :key="videoTeamGroup.id"
-      >
-        {{ videoTeamGroup.title }}
-      </t-sub-menu>
-    </t-menu-group>
+          {{ room.title }}
+        </t-sub-menu>
+      </t-menu-group>
+    </div>
     <template
       #footer
     >
@@ -142,7 +80,6 @@ import TIcon from '@/components/commons/Icon/index.vue'
 import TSubMenu from '@/components/commons/layouts/Navigator/components/SubMenu.vue'
 import useStore from '@/store'
 import { ApplicationActionTypes } from '@/store/modules/application/actions'
-import { TeamMenuGroupTypeEnum } from '@/types/model/team/menuGroup'
 
 export default defineComponent({
   name: 'Navigator',
@@ -155,12 +92,9 @@ export default defineComponent({
   },
   setup () {
     const store = useStore()
-    const teamGroups = computed(() => store.state.team.currentTeamGroups)
-    const textTeamGroups = computed(() => teamGroups.value.filter(teamGroup => teamGroup.type === TeamMenuGroupTypeEnum.text))
-    const audioTeamGroups = computed(() => teamGroups.value.filter(teamGroup => teamGroup.type === TeamMenuGroupTypeEnum.audio))
-    const videoTeamGroups = computed(() => teamGroups.value.filter(teamGroup => teamGroup.type === TeamMenuGroupTypeEnum.video))
     const application = computed(() => store.state.application)
     const navigatorVisible = computed(() => application.value.navigator)
+    const groupsAndRooms = computed(() => store.state.channel.groupsAndRooms)
 
     const changeNavigatorStatus = async () => {
       await store.dispatch(ApplicationActionTypes.CHANGE_NAVIGATOR)
@@ -168,9 +102,7 @@ export default defineComponent({
 
     return {
       navigatorVisible,
-      textTeamGroups,
-      audioTeamGroups,
-      videoTeamGroups,
+      groupsAndRooms,
       changeNavigatorStatus,
     }
   }

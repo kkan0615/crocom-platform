@@ -15,8 +15,8 @@
           <img
             class="w-14 h-14 rounded-lg bg-gray-500"
             :class="{ 'animate-pulse': !imageLoaded }"
-            :src="teamProp.img"
-            :alt="teamProp.title"
+            :src="channelProp.img"
+            :alt="channelProp.title"
             @load="imageLoaded = true"
           >
         </div>
@@ -25,29 +25,29 @@
     <t-card
       width="14"
     >
-      {{ teamProp.title }}
+      {{ channelProp.title }}
     </t-card>
   </t-dropdown-menu>
 </template>
 
 <script lang="ts">
 import { ref, defineComponent } from 'vue'
-import { Team } from '@/types/model/team/team'
+import { Channel } from '@/types/model/channel/channel'
 import TDropdownMenu from '@/components/commons/menu/Dropdown/index.vue'
 import TCard from '@/components/commons/Card/index.vue'
 
 export default defineComponent({
-  name: 'TeamMenu',
+  name: 'ChannelMenu',
   components: {
     TDropdownMenu,
     TCard,
   },
   props: {
-    team: {
+    channel: {
       type: Object,
       required: false,
       default: () => {
-        return {} as Team
+        return {} as Channel
       }
     }
   },
@@ -56,7 +56,7 @@ export default defineComponent({
 
     return {
       imageLoaded,
-      teamProp: props.team as Team
+      channelProp: props.channel as Channel
     }
   }
 })
