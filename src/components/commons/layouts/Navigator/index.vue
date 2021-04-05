@@ -1,6 +1,6 @@
 <template>
   <!-- Sidebar -->
-  <aside class="flex flex-col h-full flex-shrink-0 w-56 bg-white border-r dark:border-blue-800 dark:bg-darker">
+  <aside class="flex flex-col h-full flex-shrink-0 w-56 bg-white border dark:border-blue-800 dark:bg-darker">
     <!-- Sidebar links -->
     <nav
       aria-label="Main"
