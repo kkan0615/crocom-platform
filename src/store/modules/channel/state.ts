@@ -1,14 +1,14 @@
 import { Channel } from '@/types/model/channel/channel'
 import { ChannelRoom } from '@/types/model/channel/room'
 import { ChannelRoomGroupInfo } from '@/types/model/channel/roomGroup'
-import { User } from '@/types/model/user/user'
+import { ChannelMemberInfo } from '@/types/model/channel/member'
 
 export interface ChannelState {
   channels: Array<Channel>
   currentChannel: Channel
   groupsAndRooms: Array<ChannelRoomGroupInfo>
   currentRoom: ChannelRoom
-  currentChannelMembers: Array<User>
+  currentChannelMembers: Array<ChannelMemberInfo>
 }
 
 /**

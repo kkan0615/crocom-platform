@@ -17,7 +17,9 @@
             :key="$route.path"
           />
         </main>
-        <user-navigator />
+        <user-navigator
+          class="w-2/12"
+        />
       </div>
     </div>
   </div>

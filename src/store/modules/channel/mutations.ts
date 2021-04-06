@@ -4,6 +4,7 @@ import { Channel } from '@/types/model/channel/channel'
 import { ChannelRoom } from '@/types/model/channel/room'
 import { ChannelRoomGroupInfo } from '@/types/model/channel/roomGroup'
 import { User } from '@/types/model/user/user'
+import { ChannelMemberInfo } from '@/types/model/channel/member'
 
 export enum ChannelMutationTypes {
   SET_CHANNELS = 'CHANNEL_SET_CHANNELS',
@@ -18,7 +19,7 @@ export type ChannelMutations<S = ChannelState> = {
   [ChannelMutationTypes.SET_CURRENT_CHANNEL](state: S, payload: Channel): void
   [ChannelMutationTypes.SET_GROUPS_AND_ROOMS](state: S, payload: Array<ChannelRoomGroupInfo>): void
   [ChannelMutationTypes.SET_CURRENT_CHANNEL_ROOM](state: S, payload: ChannelRoom): void
-  [ChannelMutationTypes.SET_CURRENT_CHANNEL_MEMBERS](state: S, payload: Array<User>): void
+  [ChannelMutationTypes.SET_CURRENT_CHANNEL_MEMBERS](state: S, payload: Array<ChannelMemberInfo>): void
 
 }
 
@@ -36,6 +37,7 @@ export const channelMutations: MutationTree<ChannelState> & ChannelMutations = {
     state.currentRoom = payload
   },
   [ChannelMutationTypes.SET_CURRENT_CHANNEL_MEMBERS] (state, payload) {
+    console.log(payload)
     state.currentChannelMembers = payload
   },
 }

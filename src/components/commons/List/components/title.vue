@@ -1,5 +1,7 @@
 <template>
-  <div>
+  <div
+    class="truncate"
+  >
     <slot />
   </div>
 </template>
