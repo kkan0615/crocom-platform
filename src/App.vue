@@ -15,11 +15,11 @@ export default defineComponent({
       localStorage.setItem(KeyOfLocalstorage.THEME, getCurrentTheme())
 
       if (getCurrentTheme() === ThemeMode.DARK_MODE) {
-        if (document.documentElement.classList[ThemeMode.LIGHT_MODE])
+        if (document.documentElement.classList.contains(ThemeMode.LIGHT_MODE))
           document.documentElement.classList.remove(ThemeMode.LIGHT_MODE)
         document.documentElement.classList.add(ThemeMode.DARK_MODE)
       } else {
-        if (document.documentElement.classList[ThemeMode.DARK_MODE])
+        if (document.documentElement.classList.contains(ThemeMode.DARK_MODE))
           document.documentElement.classList.remove(ThemeMode.DARK_MODE)
         document.documentElement.classList.add(ThemeMode.LIGHT_MODE)
       }

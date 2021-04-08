@@ -6,7 +6,7 @@
       #activator
     >
       <div
-        class="w-16 h-16 cursor-pointer  border-l-4 border-red-300"
+        class="w-full h-full ma-4 cursor-pointer border-l-4 border-red-300"
       >
         <div
           class="w-full h-full rounded-lg flex justify-center items-center"
@@ -23,7 +23,7 @@
       </div>
     </template>
     <t-card
-      width="14"
+      width="10"
     >
       {{ channelProp.title }}
     </t-card>

@@ -399,11 +399,17 @@
   --color-warning-400: #{$orange-400};
   --color-warning-500: #{$orange-500};
   --color-warning-600: #{$orange-600};
-  --color-app-bar: #F2F2F2;
+  --color-main: #202225;
+  --color-app-bar: #{$blue-500};
   --color-navigator: #FFF;
   --color-sub-navigator: #FFF;
   //--color-background: #F2F2F2;
+  --color-textPrimary-100: white;
+  --color-textPrimary-200: white;
+  --color-textPrimary-300: white;
+  --color-textPrimary-400: white;
   --color-textPrimary-500: white;
+  --color-textPrimary-600: white;
 
   /** Dark mode! */
   --color-dark-primary-300: #{$blue-300};
@@ -430,7 +436,14 @@
   --color-dark-background-500: #F2F2F2;
   --color-dark-background-600: #FFF;
   --color-dark-textPrimary-500: white;
-  --color-app-bar-dark: #F2F2F2;
-  --color-navigator-dark: #FFF;
-  --color-sub-navigator-dark: #FFF;
+  --color-main-dark: #36393f;
+  --color-app-bar-dark: #36393f;
+  --color-navigator-dark: #2f3136;
+  --color-sub-navigator-dark: #202225;
+  --color-textPrimary-dark-100: white;
+  --color-textPrimary-dark-200: white;
+  --color-textPrimary-dark-300: white;
+  --color-textPrimary-dark-400: white;
+  --color-textPrimary-dark-500: white;
+  --color-textPrimary-dark-600: white;
 }

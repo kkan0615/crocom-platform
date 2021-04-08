@@ -1,6 +1,6 @@
 <template>
   <div
-    class="truncate"
+    class="flex truncate"
   >
     <slot />
   </div>

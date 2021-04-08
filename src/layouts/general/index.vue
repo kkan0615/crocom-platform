@@ -10,15 +10,17 @@
         class="flex h-full"
       >
         <sub-navigator />
-        <navigator />
-        <main class="p-4 space-y-4 w-3/4">
+        <navigator
+          class="w-56"
+        />
+        <main class="p-4 space-y-4 bg-main text-textPrimary-500 dark:bg-main-dark dark:dark:text-textPrimary-dark-500">
           {{ msg }}
           <router-view
             :key="$route.path"
           />
         </main>
         <user-navigator
-          class="w-2/12"
+          class="w-60"
         />
       </div>
     </div>

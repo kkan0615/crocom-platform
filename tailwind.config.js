@@ -4,7 +4,7 @@ const colors = require('tailwindcss/colors')
 module.exports = {
   // purge: [],
   purge: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
-  darkMode: false, // or 'media' or 'class'
+  darkMode: 'class', // or 'media' or 'class'
   theme: {
     extend: {},
     colors: {
@@ -79,9 +79,16 @@ module.exports = {
       'warning-400': 'var(--color-warning-400)',
       'warning-500': 'var(--color-warning-500)',
       'warning-600': 'var(--color-warning-600)',
+      'main': 'var(--color-main)',
       'app-bar': 'var(--color-app-bar)',
       'navigator': 'var(--color-navigator)',
       'sub-navigator': 'var(--color-sub-navigator)',
+      'textPrimary-100': 'var(--color-textPrimary-100)',
+      'textPrimary-200': 'var(--color-textPrimary-200)',
+      'textPrimary-300': 'var(--color-textPrimary-300)',
+      'textPrimary-400': 'var(--color-textPrimary-400)',
+      'textPrimary-500': 'var(--color-textPrimary-500)',
+      'textPrimary-600': 'var(--color-textPrimary-600)',
 
       'primary-dark-100': 'var(--color-dark-primary-100)',
       'primary-dark-200': 'var(--color-dark-primary-200)',
@@ -125,9 +132,16 @@ module.exports = {
       'warning-dark-400': 'var(--color-dark-warning-400)',
       'warning-dark-500': 'var(--color-dark-warning-500)',
       'warning-dark-600': 'var(--color-dark-warning-600)',
+      'main-dark': 'var(--color-main-dark)',
       'app-bar-dark': 'var(--color-app-bar-dark)',
       'navigator-dark': 'var(--color-navigator-dark)',
       'sub-navigator-dark': 'var(--color-sub-navigator-dark)',
+      'textPrimary-dark-100': 'var(--color-textPrimary-dark-100)',
+      'textPrimary-dark-200': 'var(--color-textPrimary-dark-200)',
+      'textPrimary-dark-300': 'var(--color-textPrimary-dark-300)',
+      'textPrimary-dark-400': 'var(--color-textPrimary-dark-400)',
+      'textPrimary-dark-500': 'var(--color-textPrimary-dark-500)',
+      'textPrimary-dark-600': 'var(--color-textPrimary-dark-600)',
     },
     minWidth: {
       0: '0px',

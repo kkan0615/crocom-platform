@@ -3,6 +3,11 @@
     v-if="userNavigatorVisible"
     class="flex flex-col"
   >
+    <div
+      class="text-sm"
+    >
+      User list
+    </div>
     <t-list
       v-for="member in currentChannelMembers"
       :key="member.id"
@@ -19,7 +24,9 @@
           >
         </t-badge>
       </t-icon-list>
-      <t-content-list>
+      <t-content-list
+        class="w-36"
+      >
         <t-title-list>
           {{ member.user.nickname }}
         </t-title-list>
