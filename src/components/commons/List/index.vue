@@ -1,6 +1,10 @@
 <template>
-  <div :class="wrapperStyle">
+  <div
+    :class="wrapperStyle"
+    role="list"
+  >
     <div
+      role="listitem"
       :class="itemStyle"
     >
       <slot />
@@ -34,25 +38,16 @@ export default defineComponent({
     const wrapperStyle = computed(() => {
       return {
         'cursor-pointer': true,
-        'w-full': true,
         'rounded-t': props.rounded,
         [`hover:bg-${props.color}`]: true,
-        'border-b': props.border,
-        [`border-${props.color}`]: props.border,
-
       }
     })
 
     const itemStyle = computed(() => {
       return {
         'flex': true,
-        'items-center': true,
-        'w-full': true,
         'p-2': true,
-        'pl-2': true,
         'border-transparent': true,
-        'relative': true,
-        'border-l-2': props.border,
         [`hover:border-${props.color}`]: props.border,
       }
     })

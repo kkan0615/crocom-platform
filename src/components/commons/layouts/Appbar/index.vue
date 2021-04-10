@@ -1,6 +1,6 @@
 <template>
   <header
-    class="flex items-center top-0 w-full h-12 bg-primary"
+    class="flex items-center top-0 w-full h-12 bg-app-bar dark:bg-app-bar-dark"
     :class="wrapperClasses"
   >
     <slot />

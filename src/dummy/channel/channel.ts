@@ -1,6 +1,6 @@
 import { Channel } from '@/types/model/channel/channel'
 
-export const channels: Array<Channel> = [
+export const dummyChannels: Array<Channel> = [
   {
     id: 1,
     img: 'https://newsimg.sedaily.com/2020/04/04/1Z1CEHIPLZ_4.jpg',
@@ -19,9 +19,9 @@ export const channels: Array<Channel> = [
 ]
 
 export const loadChannels = async () => {
-  return channels
+  return dummyChannels
 }
 
 export const loadChannelById = async (channelId: number) => {
-  return channels.find(channel => channel.id === channelId)
+  return dummyChannels.find(channel => channel.id === channelId)
 }

@@ -2,6 +2,7 @@
   Tailwind css import
 */
 @import "./color.scss";
+@import "./overflow.scss";
 
 // noinspection CssInvalidAtRule
 @tailwind base;
@@ -10,3 +11,29 @@
 // noinspection CssInvalidAtRule
 @tailwind utilities;
 /********************************************/
+
+
+/*********************
+scroll
+ */
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #666b7a;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 8px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

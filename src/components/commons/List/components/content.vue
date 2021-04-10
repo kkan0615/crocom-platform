@@ -1,8 +1,6 @@
 <template>
-  <div class="w-full items-center flex">
-    <div class="mx-2 -mt-1">
-      <slot />
-    </div>
+  <div class="mx-2 -mt-1">
+    <slot />
   </div>
 </template>
 

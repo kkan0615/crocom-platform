@@ -1,5 +1,5 @@
 <template>
-  <div class="text-xs truncate w-full normal-case font-normal -mt-1">
+  <div class="flex text-xs truncate normal-case font-normal mt-1">
     <slot />
   </div>
 </template>
