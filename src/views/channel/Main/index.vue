@@ -17,14 +17,14 @@ export default defineComponent({
     const store = useStore()
 
     const route = useRoute()
-    const { id } = route.params
+    const { channelId } = route.params
 
-    onMounted(async () => {
-      if (Number(id)) {
-        const responseData = (await loadChannelRoomGroupByChannelId(Number(id)))
-        await store.dispatch(ChannelActionTypes.SET_CURRENT_ROOM, responseData)
-      }
-    })
+    // onMounted(async () => {
+    //   if (Number(id)) {
+    //     const responseData = (await loadChannelRoomGroupByChannelId(Number(id)))
+    //     await store.dispatch(ChannelActionTypes.SET_CURRENT_ROOM, responseData)
+    //   }
+    // })
 
     const msg = ref('Channel Main')
 

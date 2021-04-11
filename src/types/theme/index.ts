@@ -21,5 +21,5 @@ export enum ThemeMode {
  * get current mode
  */
 export const getCurrentTheme = () => {
-  return localStorage.getItem(KeyOfLocalstorage.THEME) || ThemeMode.LIGHT_MODE
+  return localStorage.getItem(KeyOfLocalstorage.THEME) || ThemeMode.DARK_MODE // Default is dark mode
 }

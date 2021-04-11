@@ -8,6 +8,8 @@ export enum ApplicationActionTypes {
   SET_NAVIGATOR = 'APPLICATION_SET_NAVIGATOR',
   CHANGE_SUB_NAVIGATOR = 'APPLICATION_CHANGE_SUB_NAVIGATOR',
   SET_SUB_NAVIGATOR = 'APPLICATION_SET_SUB_NAVIGATOR',
+  CHANGE_USER_NAVIGATOR = 'APPLICATION_CHANGE_USER_NAVIGATOR',
+  SET_USER_NAVIGATOR = 'APPLICATION_SET_USER_NAVIGATOR',
 }
 
 export type AugmentedActionContext = {
@@ -32,6 +34,13 @@ export interface ApplicationActions {
     { commit }: AugmentedActionContext,
     payload: boolean
   ): void
+  [ApplicationActionTypes.CHANGE_USER_NAVIGATOR](
+    { commit }: AugmentedActionContext,
+  ): void
+  [ApplicationActionTypes.SET_USER_NAVIGATOR](
+    { commit }: AugmentedActionContext,
+    payload: boolean
+  ): void
 }
 
 export const applicationActions: ActionTree<ApplicationState, RootState> & ApplicationActions = {
@@ -46,5 +55,11 @@ export const applicationActions: ActionTree<ApplicationState, RootState> & Appli
   },
   [ApplicationActionTypes.SET_SUB_NAVIGATOR] ({ commit }, payload) {
     commit(ApplicationMutationTypes.SET_NAVIGATOR, payload)
+  },
+  [ApplicationActionTypes.CHANGE_USER_NAVIGATOR] ({ commit }) {
+    commit(ApplicationMutationTypes.CHANGE_USER_NAVIGATOR)
+  },
+  [ApplicationActionTypes.SET_USER_NAVIGATOR] ({ commit }, payload) {
+    commit(ApplicationMutationTypes.SET_USER_NAVIGATOR, payload)
   },
 }
