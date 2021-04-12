@@ -9,12 +9,13 @@ export const loadChannelRoomsByChannelRoomGroupId = async (roomGroupId: number) 
 }
 
 export const generateRandomChanelRooms = async () => {
-  for (let i = 0; i < 100; i++) {
+  for (let i = 0; i < 30; i++) {
     channelRooms.push({
-      id: i,
-      title: faker.name.jobTitle(),
+      id: i + 1,
+      title: faker.lorem.words(generateRandomIntNumber(1, 2)),
       maxPeople: generateRandomIntNumber(0, 10),
       roomGroupId: generateRandomIntNumber(0, 20),
+      channelRoomType: 'chat',
     } as ChannelRoom)
   }
 

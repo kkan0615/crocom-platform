@@ -23,6 +23,7 @@
         </t-icon>
       </div>
     </div>
+    <t-divider />
     <!-- Home menu item -->
     <t-sub-menu
       @click="onClickHomeMenu"
@@ -52,9 +53,9 @@
       <t-icon
         class="mr-2"
       >
-        person
+        event_available
       </t-icon>
-      Home
+      Calendar
     </t-sub-menu>
     <div
       class="flex-grow overflow-y-auto"
@@ -71,7 +72,7 @@
           <t-icon
             class="mr-2"
           >
-            menu
+            question_answer
           </t-icon>
         </template>
         <template
@@ -79,13 +80,16 @@
         >
           {{ group.title }}
         </template>
-        <t-sub-menu
-          v-for="room in group.rooms"
-          :key="room.id"
-          class="p-1 space-y-2 px-7 "
-        >
-          {{ room.title }}
-        </t-sub-menu>
+        <div>
+          <t-sub-menu
+            v-for="room in group.rooms"
+            :key="room.id"
+            class="p-1 space-y-2 pl-7"
+            @click="onClickChatRoom(room)"
+          >
+            {{ room.title }}
+          </t-sub-menu>
+        </div>
       </t-menu-group>
     </div>
     <template
@@ -107,9 +111,11 @@ import TButton from '@/components/commons/Button/index.vue'
 import TMenuGroup from '@/components/commons/layouts/Navigator/components/MenuGroup.vue'
 import TIcon from '@/components/commons/Icon/index.vue'
 import TSubMenu from '@/components/commons/layouts/Navigator/components/SubMenu.vue'
+import TDivider from '@/components/commons/Divider/inedx.vue'
 import useStore from '@/store'
 import { ApplicationActionTypes } from '@/store/modules/application/actions'
 import { useRoute, useRouter } from 'vue-router'
+import { ChannelRoomInfo } from '@/types/model/channel/room'
 
 export default defineComponent({
   name: 'Navigator',
@@ -119,6 +125,7 @@ export default defineComponent({
     TMenuGroup,
     TIcon,
     TSubMenu,
+    TDivider,
   },
   setup () {
     const router = useRouter()
@@ -144,6 +151,10 @@ export default defineComponent({
         await router.push({ name: 'HomeChannel', params: { channelId: currentChannelId } })
     }
 
+    const onClickChatRoom = async (chatRoom: ChannelRoomInfo) => {
+      await router.push({ name: 'ChatRoomChannel', params: { chatId: chatRoom.id } })
+    }
+
     return {
       navigatorVisible,
       userNavigatorVisible,
@@ -151,7 +162,8 @@ export default defineComponent({
       groupsAndRooms,
       changeNavigatorStatus,
       changeUserNavigatorStatus,
-      onClickHomeMenu
+      onClickHomeMenu,
+      onClickChatRoom,
     }
   }
 })
