@@ -1,6 +1,5 @@
 <template>
   <div>
-    {{ msg }}
     {{ userInfo }}
     <router-link
       :to="{ name: 'Playground' }"
@@ -11,36 +10,24 @@
 </template>
 
 <script lang="ts">
-import { ref, defineComponent, onMounted, computed, inject } from 'vue'
-// import { useStore } from 'vuex'
-import useStore, { key } from '@/store'
-import { useRouter } from 'vue-router'
+import { defineComponent, onMounted, computed, } from 'vue'
+import useStore from '@/store'
 import { ChannelActionTypes } from '@/store/modules/channel/actions'
-// import { UserActionTypes } from '@/store/modules/user/actions'
+import { ApplicationActionTypes } from '@/store/modules/application/actions'
 
 export default defineComponent({
   name: 'Home',
   setup () {
-    const msg = ref('Home File')
     const store = useStore()
 
     const userInfo = computed(() => store.state.user)
 
     onMounted(async () => {
       await store.dispatch(ChannelActionTypes.RESET_CHANNEL_INFO)
-      // console.log(store)
-      // console.log('state', store.state)
-      // console.log('state.user', store.state.user)
-      // console.log('getters', store.getters.isLoggedIn)
-      // console.log('dispatch', await store.dispatch(UserActionTypes.setUser, { id: 1, name: 'test' }))
-      // console.log('-00----------------------after-00------------------------')
-      // console.log('after state', store.state.user)
-      // console.log('getters', store.getters.isLoggedIn)
-      // console.log(dialog.confirm('test'))
+      await store.dispatch(ApplicationActionTypes.SET_USER_NAVIGATOR, false)
     })
 
     return {
-      msg,
       userInfo,
     }
   }

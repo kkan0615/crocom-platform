@@ -6,7 +6,8 @@ export enum ApplicationMutationTypes {
   SET_NAVIGATOR = 'APPLICATION_SET_NAVIGATOR',
   CHANGE_SUB_NAVIGATOR = 'APPLICATION_CHANGE_SUB_NAVIGATOR',
   SET_SUB_NAVIGATOR = 'APPLICATION_SET_SUB_NAVIGATOR',
-  SET_USER_NAVIGATOR = 'APPLICATION_SET_USER_NAVIGATOR'
+  CHANGE_USER_NAVIGATOR = 'APPLICATION_CHANGE_USER_NAVIGATOR',
+  SET_USER_NAVIGATOR = 'APPLICATION_SET_USER_NAVIGATOR',
 }
 
 export type ApplicationMutations<S = ApplicationState> = {
@@ -14,6 +15,7 @@ export type ApplicationMutations<S = ApplicationState> = {
   [ApplicationMutationTypes.SET_NAVIGATOR](state: S, payload: boolean): void
   [ApplicationMutationTypes.CHANGE_SUB_NAVIGATOR](state: S): void
   [ApplicationMutationTypes.SET_SUB_NAVIGATOR](state: S, payload: boolean): void
+  [ApplicationMutationTypes.CHANGE_USER_NAVIGATOR](state: S): void
   [ApplicationMutationTypes.SET_USER_NAVIGATOR](state: S, payload: boolean): void
 }
 
@@ -29,6 +31,9 @@ export const applicationMutations: MutationTree<ApplicationState> & ApplicationM
   },
   [ApplicationMutationTypes.SET_SUB_NAVIGATOR] (state, payload) {
     state.subNavigator = payload
+  },
+  [ApplicationMutationTypes.CHANGE_USER_NAVIGATOR] (state) {
+    state.userNavigator = !state.userNavigator
   },
   [ApplicationMutationTypes.SET_USER_NAVIGATOR] (state, payload) {
     state.userNavigator = payload

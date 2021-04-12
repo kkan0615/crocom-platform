@@ -73,7 +73,7 @@ export default defineComponent({
      * @param channel
      */
     const onClickChannelMenu = async (channel: Channel) => {
-      await router.push({ name: 'ChannelMainWithOutRoomId', params: { channelId: channel.id.toString() } })
+      await router.push({ name: 'HomeChannel', params: { channelId: channel.id.toString() } })
     }
 
     return {

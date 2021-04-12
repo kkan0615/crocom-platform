@@ -1,16 +1,14 @@
 <template>
   <div
-    class="flex items-center p-2 text-gray-500 transition-colors rounded-md dark:text-white cursor-pointer hover:text-white"
+    class="flex items-center p-1 text-textPrimary-dark-500 transition-colors rounded-md dark:text-textPrimary-dark-500 cursor-pointer hover:text-white"
     :class="wrapperStyle"
     role="menu"
     @click="handleMenuGroup"
   >
-    <span>
-      <slot
-        name="icon"
-      />
-    </span>
-    <span class="ml-2 text-sm">
+    <slot
+      name="icon"
+    />
+    <span class="text-sm">
       <slot
         name="label"
       />
@@ -56,7 +54,7 @@ export default defineComponent({
     color: {
       type: String,
       required: false,
-      default: 'blue'
+      default: 'primary'
     }
   },
   emits: [

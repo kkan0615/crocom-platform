@@ -85,6 +85,9 @@ export const channelActions: ActionTree<ChannelState, RootState> & ChannelAction
     return responseData
   },
   async [ChannelActionTypes.INIT_CHANNEL_INFO] ({ commit }, payload) {
+    /* Set current Channel */
+    const responseCurrentChannel = await loadChannelById(payload)
+    commit(ChannelMutationTypes.SET_CURRENT_CHANNEL, responseCurrentChannel)
     const responseChannelRoomGroup = await loadChannelRoomGroupByChannelId(payload)
     const groupAndRooms = await Promise.all(responseChannelRoomGroup.map(async (group) => {
       return {
