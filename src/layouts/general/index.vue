@@ -16,14 +16,13 @@
         <div
           class="h-full flex-auto flex"
         >
-          <main class="p-4 space-y-4 bg-main text-textPrimary-500 dark:bg-main-dark dark:dark:text-textPrimary-dark-500 flex-auto">
-            {{ msg }}
+          <main class="h-full p-4 space-y-4 bg-main text-textPrimary-500 dark:bg-main-dark dark:dark:text-textPrimary-dark-500 flex-auto">
             <router-view
               :key="$route.path"
             />
           </main>
           <user-navigator
-            class="w-60"
+            class="h-full w-60"
           />
         </div>
       </div>

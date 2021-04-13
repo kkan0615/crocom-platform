@@ -3,6 +3,7 @@
     :readOnly="readOnly"
     :disabled="disabled"
     :class="styles"
+    class="py-2 px-3 text-sm focus:outline-none"
   >
     <!-- Button name(label) will be in this slot -->
     <slot />
@@ -55,10 +56,6 @@ export default defineComponent({
   setup (props) {
     const styles = computed(() => {
       return {
-        'focus:outline-none': true,
-        'text-sm': true,
-        'py-2': true,
-        'px-3': true,
         'rounded-md': true,
         'opacity-20': props.disabled,
         'text-white': !props.border && !props.flat,

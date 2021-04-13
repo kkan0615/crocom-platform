@@ -57,6 +57,17 @@
       </t-icon>
       Calendar
     </t-sub-menu>
+    <!-- User list item -->
+    <t-sub-menu
+      @click="onClickUsersMenu"
+    >
+      <t-icon
+        class="mr-2"
+      >
+        event_available
+      </t-icon>
+      Users
+    </t-sub-menu>
     <div
       class="flex-grow overflow-y-auto"
     >
@@ -155,6 +166,12 @@ export default defineComponent({
       await router.push({ name: 'ChatRoomChannel', params: { chatId: chatRoom.id } })
     }
 
+    const onClickUsersMenu = async () => {
+      const currentChannelId = route.params.channelId
+      if (currentChannelId)
+        await router.push({ name: 'UsersChannel', params: { channelId: currentChannelId } })
+    }
+
     return {
       navigatorVisible,
       userNavigatorVisible,
@@ -163,6 +180,7 @@ export default defineComponent({
       changeNavigatorStatus,
       changeUserNavigatorStatus,
       onClickHomeMenu,
+      onClickUsersMenu,
       onClickChatRoom,
     }
   }

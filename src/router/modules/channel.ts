@@ -18,9 +18,17 @@ const channelRoutes: Array<RouteRecordRaw> = [
         }
       },
       {
+        path: 'id/:channelId/users',
+        name: 'UsersChannel',
+        component: () => import('@/views/channel/Users/index.vue'),
+        meta: {
+          hidden: false,
+        }
+      },
+      {
         path: 'id/:channelId/chat/:chatId',
         name: 'ChatRoomChannel',
-        component: () => import('@/views/channel/Main/index.vue'),
+        component: () => import('@/views/channel/Chat/index.vue'),
         meta: {
           hidden: false,
         }
