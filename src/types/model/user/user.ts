@@ -6,8 +6,17 @@ export interface User extends SequelizeAttributes {
   color?: string
   name: string
   nickname: string
+  description?: string
 }
 
 export interface UserInfo extends User{
   Friends: Array<Friend>
 }
+
+/**
+ * login - green
+ * busy - red
+ * out - grey
+ * sleep - orange
+ */
+export type StatusEnum = 'login' | 'busy' | 'out' | 'sleep'

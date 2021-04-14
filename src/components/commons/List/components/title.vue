@@ -1,5 +1,7 @@
 <template>
-  <div>
+  <div
+    class="flex truncate"
+  >
     <slot />
   </div>
 </template>

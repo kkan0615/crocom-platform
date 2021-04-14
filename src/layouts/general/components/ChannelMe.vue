@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-16 h-16 cursor-pointer"
+    class="w-16 h-16 cursor-pointer m-2"
     @click="onClickHome"
   >
     <div

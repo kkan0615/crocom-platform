@@ -1,6 +1,6 @@
 <template>
-  <div class="flex-shrink-0 w-10 h-10">
-    <slot />
+  <div>
+    {{ msg }}
   </div>
 </template>
 
@@ -8,9 +8,9 @@
 import { ref, defineComponent } from 'vue'
 
 export default defineComponent({
-  name: 'TIconList',
+  name: 'ChatChannel',
   setup () {
-    const msg = ref('Home File')
+    const msg = ref('Chat Channel')
 
     return {
       msg,

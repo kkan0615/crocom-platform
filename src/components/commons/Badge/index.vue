@@ -6,7 +6,7 @@
   <!--  avatar   -->
   <!--  @TODO: 다음꺼 삭제하기 https://randomuser.me/api/portraits/men/62.jpg -->
   <div
-    class="flex relative bg-orange-500 justify-center items-center m-1 mr-2 text-white"
+    class="flex relative bg-orange-500 justify-center items-center  text-white"
     :class="wrapperClasses"
   >
     <slot />

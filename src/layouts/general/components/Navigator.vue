@@ -9,20 +9,57 @@
       <div
         class="flex-auto"
       >
-        test
+        {{ currentChannel.title }}
       </div>
+      <t-icon>
+        help_outlined
+      </t-icon>
       <div
         class="flex-shrink-0 justify-end"
-        @click="changeNavigatorStatus"
+        @click="changeUserNavigatorStatus"
       >
         <t-icon>
-          first_page
+          {{ userNavigatorVisible ? 'menu_open' : 'menu' }}
         </t-icon>
       </div>
     </div>
+    <!-- Home menu item -->
+    <t-sub-menu
+      @click="onClickHomeMenu"
+    >
+      <t-icon
+        class="mr-2"
+      >
+        person
+      </t-icon>
+      Home
+    </t-sub-menu>
+    <!-- card list item -->
+    <t-sub-menu
+      @click="onClickHomeMenu"
+    >
+      <t-icon
+        class="mr-2"
+      >
+        person
+      </t-icon>
+      Todo
+    </t-sub-menu>
+    <!-- Calendar item -->
+    <t-sub-menu
+      @click="onClickHomeMenu"
+    >
+      <t-icon
+        class="mr-2"
+      >
+        person
+      </t-icon>
+      Home
+    </t-sub-menu>
     <div
       class="flex-grow overflow-y-auto"
     >
+      <!-- Chat list -->
       <t-menu-group
         v-for="group in groupsAndRooms"
         :key="group.id"
@@ -31,20 +68,11 @@
         <template
           #icon
         >
-          <svg
-            class="w-5 h-5"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
+          <t-icon
+            class="mr-2"
           >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-            />
-          </svg>
+            menu
+          </t-icon>
         </template>
         <template
           #label
@@ -54,6 +82,7 @@
         <t-sub-menu
           v-for="room in group.rooms"
           :key="room.id"
+          class="p-1 space-y-2 px-7 "
         >
           {{ room.title }}
         </t-sub-menu>
@@ -80,6 +109,7 @@ import TIcon from '@/components/commons/Icon/index.vue'
 import TSubMenu from '@/components/commons/layouts/Navigator/components/SubMenu.vue'
 import useStore from '@/store'
 import { ApplicationActionTypes } from '@/store/modules/application/actions'
+import { useRoute, useRouter } from 'vue-router'
 
 export default defineComponent({
   name: 'Navigator',
@@ -91,19 +121,37 @@ export default defineComponent({
     TSubMenu,
   },
   setup () {
+    const router = useRouter()
+    const route = useRoute()
     const store = useStore()
     const application = computed(() => store.state.application)
     const navigatorVisible = computed(() => application.value.navigator)
+    const userNavigatorVisible = computed(() => application.value.userNavigator)
+    const currentChannel = computed(() => store.state.channel.currentChannel)
     const groupsAndRooms = computed(() => store.state.channel.groupsAndRooms)
 
     const changeNavigatorStatus = async () => {
       await store.dispatch(ApplicationActionTypes.CHANGE_NAVIGATOR)
     }
 
+    const changeUserNavigatorStatus = async () => {
+      await store.dispatch(ApplicationActionTypes.CHANGE_USER_NAVIGATOR)
+    }
+
+    const onClickHomeMenu = async () => {
+      const currentChannelId = route.params.channelId
+      if (currentChannelId)
+        await router.push({ name: 'HomeChannel', params: { channelId: currentChannelId } })
+    }
+
     return {
       navigatorVisible,
+      userNavigatorVisible,
+      currentChannel,
       groupsAndRooms,
       changeNavigatorStatus,
+      changeUserNavigatorStatus,
+      onClickHomeMenu
     }
   }
 })

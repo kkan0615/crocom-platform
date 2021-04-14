@@ -1,6 +1,6 @@
 <template>
   <t-app-bar
-    class="left-0 top-0 absolute"
+    class="left-0 top-0 absolute "
     style="z-index: 100"
   >
     <t-icon
